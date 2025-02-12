@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schemalist gettext-domain="multielement">
+<schemalist gettext-domain="multiElement">
 	<schema id="ua.inf.multiapps.multiElement" path="/ua/inf/multiapps/multiElement/">
 	</schema>
 </schemalist>

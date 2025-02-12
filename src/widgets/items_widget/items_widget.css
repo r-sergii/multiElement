@@ -1,0 +1,68 @@
+.pink {
+  background-color: pink;
+}
+
+.green {
+  background-color: green;
+}
+
+.purple {
+  background-color: purple;
+}
+
+.lightgrey {
+  background-color: lightgrey;
+}
+
+.palegreen {
+  background-color: palegreen;
+}
+
+.default {
+  background-color: #D2D2D2;
+}
+
+.cNemetal {
+  background-color: #A0FFA0;
+}
+
+.cReal {
+  background-color: #C0FFFF;
+}
+
+.cSheloch {
+  background-color: #FF6666;
+}
+
+.cShelLand {
+  background-color: #FFDEAD;
+}
+
+.cPolimetal {
+  background-color: #CCCC99;
+}
+
+.cGalogen {
+  background-color: #FFFF99;
+}
+
+.cPostmetal {
+  background-color: #CCCCCC;
+}
+
+.cLantan {
+  background-color: #FFBFFF;
+}
+
+.cActan {
+  background-color: #FF99CC;
+}
+
+.cMetal {
+  background-color: #FFC0C0;
+}
+
+.cUnknown {
+  background-color: #FFFFFF;
+}
+
