@@ -12,6 +12,9 @@ namespace Multielement {
 
     	private Gtk.ListBox list_box;
     	private Gtk.Notebook nb;
+    	private ShortWidget shortWidget;
+        private ExtendedWidget extendedWidget;
+
     	private MyLib.ThemeSwitcher theme_switcher;
 
 //        private Adw.Window window_adw;
@@ -21,7 +24,11 @@ namespace Multielement {
 		public MainWindow (Adw.Application application) {
 			Object (application: application, title: "multiElement",
 			//height_request: 300, width_request: 600,
-			default_width: 860, default_height: 950);//480);
+			//default_width: 860, default_height: 950);//480);
+			default_width: 800, default_height: 600);//480);
+//		    this.bind_property("default-width", this, "windowWidth", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
+  //          this.bind_property("default-height", this, "windowHeight", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
+    //        this.bind_property("maximized", this, "isMaximized", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
  	    }
 
  	    construct{
@@ -34,6 +41,7 @@ namespace Multielement {
             Gtk.StyleContext.add_provider_for_display(Gdk.Display.get_default(),css_provider,Gtk.STYLE_PROVIDER_PRIORITY_USER);
 
             list_box = new Gtk.ListBox ();
+            list_box.set_size_request (200, -1);
             list_box.vexpand = true;
             list_box.row_selected.connect(on_select_item);
             var scroll = new Gtk.ScrolledWindow () {
@@ -51,10 +59,14 @@ namespace Multielement {
             //Notebook
 	        nb = new Gtk.Notebook();
 	        nb.set_show_tabs(false);
-	        var shortWidget = new ShortWidget();
-	        nb.append_page(shortWidget.ShortWidget (this), null);
-	        var extendedWidget = new ExtendedWidget();
-	        nb.append_page(extendedWidget.ExtendedWidget (this), null);
+//	        var shortWidget = new ShortWidget();
+//	        nb.append_page(shortWidget.ShortWidget (this), null);
+            shortWidget = new ShortWidget(this);
+            nb.append_page( shortWidget, null);
+//	        var extendedWidget = new ExtendedWidget();
+//	        nb.append_page(extendedWidget.ExtendedWidget (this), null);
+	        extendedWidget = new ExtendedWidget(this);
+	        nb.append_page( extendedWidget, null);
 	        var circleWidget = new CircleWidget();
 	        nb.append_page(circleWidget.CircleWidget (this), null);
 	        var piramidWidget = new PiramidWidget();
@@ -380,5 +392,56 @@ namespace Multielement {
 //call_html("x-www-browser http://google.com/","");
 	        return true;
         }
+
+        void set_child_width (int value) {
+            int page = nb.get_current_page();
+            switch(page) {
+                case 0:
+                shortWidget.set_width (value);
+                    break;
+                case 1:
+                shortWidget.set_width (value);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+/////// Size determination
+        public int windowHeight {
+            get { return get_height(); }
+            set {
+                Idle.add(() => {
+                    print(@"window height: $value\n");
+                    return Source.REMOVE;
+                });
+            }
+        }
+
+        public int windowWidth {
+            get { return get_width(); }
+            set {
+                Idle.add(() => {
+                    print(@"window width: $value\n");
+//                    message (nb.get_current_page().to_string ());
+//                    set_child_width (value);
+                    return Source.REMOVE;
+                });
+                //grid.set_size_request (get_width (), get_height ());
+            }
+        }
+
+        public bool isMaximized {
+            get { return maximized; }
+            set {
+                Idle.add(() => {
+                    print(@"window maximized: $isMaximized; width: $(get_width())\n");
+                    return Source.REMOVE;
+                });
+            }
+        }
+
+/////???
+
     }
 }

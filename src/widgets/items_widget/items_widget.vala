@@ -5,6 +5,143 @@ using MyLib;
 
 namespace Multielement {
 
+    public class PeriodItem : Gtk.Frame {
+
+        private string Text;
+
+        public PeriodItem(string _Text) {
+            Text = _Text;
+            Label lName = new Gtk.Label (Text);      //14000
+
+	        lName.set_markup("<span size='12000'>" + Text + "</span>");
+	        lName.set_justify(Justification.CENTER);
+	        this.set_label((string)null);
+	        this.set_child(lName);
+        }
+    }
+
+    public class TitleItem  : Gtk.Frame {
+
+        private string Text;
+
+        public TitleItem (string _Text) {
+            Text = _Text;
+	        Gtk.Label lName = new Gtk.Label (Text);      //12000//10000
+
+	        lName.set_markup("<span size='9000'>" + Text + "</span>");
+	        lName.set_justify(Justification.CENTER);
+	        this.set_label((string)null);
+	        this.set_child(lName);
+        }
+    }
+
+    public class ElementItem : Gtk.Button {
+
+        private string Nomer;
+	    private string Text;
+	    private string Weight;
+
+      public ElementItem (string _Nomer, string _Text, string _Weight, string gColor, MainWindow parent)
+      {
+	      Nomer = _Nomer;
+	      Text = _Text;
+	      Weight = _Weight;
+
+//	      Gtk.Button frm = new Gtk.Button();
+
+	      Label lNomer = new Gtk.Label (Nomer);
+	      Label lName = new Gtk.Label (Text);
+	      Label lWeight = new Gtk.Label (Weight);
+
+	      //VBox vBox = new VBox(false, 1);
+          Gtk.Box vBox = new Gtk.Box (Gtk.Orientation.VERTICAL, 1);
+
+	      vBox.set_homogeneous (false);
+	      lNomer.set_markup ("<span size='6000'>" + Nomer + "</span>");
+	      lNomer.set_justify (Justification.RIGHT);
+	      lNomer.remove_css_class(multiElement.Resourse.cDefault);
+	      lNomer.add_css_class(gColor);
+
+			    //this
+	      vBox.append (lNomer);
+
+	      lName.set_markup ("<span size='12000'>" + Text + "</span>");
+	      lName.set_justify (Justification.LEFT);
+          lName.set_use_markup(true);
+          lName.remove_css_class(multiElement.Resourse.cDefault);
+          lName.add_css_class(gColor);
+
+			    //this
+	      vBox.append (lName);
+/*
+	      lWeight.set_markup ("<span size='8000'>" + Weight + "</span>");
+	      lWeight.set_justify (Justification.LEFT);
+          lWeight.set_use_markup(true);
+          lWeight.remove_css_class(multiElement.Resourse.cDefault);
+          lWeight.add_css_class(gColor);
+
+			    //this
+          vBox.append (lWeight);
+*/
+//	      ConnectCall(Nomer, frm, parent);
+	      this.set_label ((string)null);
+          this.set_child (vBox);
+
+          this.remove_css_class(multiElement.Resourse.cDefault);
+          this.add_css_class(gColor);
+
+//	      return frm;
+      }
+    }
+
+    public class OHItem : Gtk.Frame {
+
+        private string Text;
+
+        public OHItem (string _TextR, string _ValR, string _Text, string _Val)
+        {
+	      Text = _TextR;
+	      //Frame frm = new Gtk.Frame("");
+	      Label lName = new Gtk.Label (Text);      //16000//12000
+
+	      lName.set_markup ("<span size='10000'>" + _TextR + "</span>" + "<span size='8000'>" + _ValR + "</span>"
+				         + "<span size='10000'>" + _Text + "</span>" + "<span size='8000'>" + _Val + "</span>");
+	      lName.set_justify (Justification.CENTER);
+	      this.set_label((string)null);
+	      this.set_child(lName);
+
+//	      return frm;
+
+        }
+    }
+
+    public class PropertiesItem : Gtk.Frame {
+
+        private string Text;
+
+        public PropertiesItem (string _Text, string gColor)
+        {
+	      Text = _Text;
+	      //Frame frm = new Gtk.Frame("");
+	      Label lName = new Gtk.Label (Text);      //16000//12000
+
+	      Gtk.Box vBox = new Gtk.Box (Gtk.Orientation.VERTICAL, 1);
+
+	      lName.set_markup ("<span size='9000'>" + Text + "</span>");
+	      lName.set_justify (Justification.LEFT);
+          lName.add_css_class(gColor);
+	      //this
+	      vBox.append(lName);
+
+	      this.set_label((string)null);
+          this.set_child(vBox);
+
+//	      return frm;
+      }
+
+    }
+
+
     class ItemWidgets
     {
 

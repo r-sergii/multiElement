@@ -5,14 +5,18 @@ using MyLib;
 
 namespace Multielement {
 
-    class ShortWidget
+    class ShortWidget : Gtk.Box
     {
 
-      public Gtk.Box ShortWidget (MainWindow parent)
+        public void set_width (int width) {
+            message ("child short");
+            message (width.to_string ());
+        }
+
+//      public Gtk.Box ShortWidget (MainWindow parent)
+      public ShortWidget (MainWindow parent)
       {
-	      //Gtk.VBox mainBox = new VBox (false, 1);//0
 	      Gtk.Box mainBox = new Gtk.Box (Gtk.Orientation.VERTICAL, 1);//0
-	      //mainBox.set_border_width (2);//0;
 
     //	  this.add (mainBox);
 
@@ -31,9 +35,12 @@ namespace Multielement {
 	            row_spacing = 2
 	      };
 	      grid.set_halign(Gtk.Align.FILL);
-	      grid.attach (itemWidgets.PeriodItem("Group"), 2, 0, 12, 1);
+	//      grid.attach (itemWidgets.PeriodItem("Group"), 2, 0, 12, 1);
 
-	      grid.attach (itemWidgets.TitleItem("Period"), 0, 0, 1, 2);
+grid.attach (new PeriodItem("Group"), 2, 0, 12, 1);
+grid.attach (new TitleItem("Period"), 0, 0, 1, 2);
+
+//	      grid.attach (itemWidgets.TitleItem("Period"), 0, 0, 1, 2);
 	      grid.attach (itemWidgets.TitleItem("Row"), 1, 0, 1, 2);
 	      grid.attach (itemWidgets.PeriodItem("I"), 2, 1, 1, 1);
 	      grid.attach (itemWidgets.PeriodItem("II"), 3, 1, 1, 1);
@@ -241,11 +248,16 @@ namespace Multielement {
 	      grid.attach (itemWidgets.PropertiesItem(TextOperation.TextTrim("Post-transition metals",15), multiElement.Resourse.cPostmetal), 6, 21, 3, 1);
 	      grid.attach (itemWidgets.PropertiesItem(TextOperation.TextTrim("Semimetals",15), multiElement.Resourse.cPolimetal), 9, 21, 3, 1);
 
-          scroll.set_child (grid);
-          mainBox.append(scroll);
-	      //mainBox.pack_start (scroll, true, true, 1);//true,true,1//false, false, 0
 
-	      return mainBox;
+            var centerBox = new CenterBox ();
+            centerBox.set_center_widget (grid);
+            scroll.set_child (centerBox);
+            this.append(scroll);
+
+//          scroll.set_child (grid);
+  //        this.append(scroll);
+
+//	      return mainBox;
      }
   }
 }
