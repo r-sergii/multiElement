@@ -1,6 +1,6 @@
 namespace Multielement {
 
-    class ElementField {
+    public abstract class ElementField {
         public const string id = "id";
         public const string nomer = "nomer";
         public const string name = "name";
@@ -61,89 +61,89 @@ namespace Multielement {
         }
 
         public ElementModel.fromJson (Json.Node item) {
-            ElementField elementField = new ElementField();
+//            ElementField elementField = new ElementField();
 
             Json.Object obj = item.get_object ();
             foreach(unowned string name2 in obj.get_members ()) {
                 switch(name2) {
-                    case elementField.id:
+                    case ElementField.id:
                         unowned Json.Node it = obj.get_member (name2);
-                        id = obj.get_int_member (elementField.id);
+                        id = obj.get_int_member (ElementField.id);
                         message(id.to_string());
                         break;
-                    case elementField.nomer:
+                    case ElementField.nomer:
                         unowned Json.Node it = obj.get_member (name2);
-                        nomer = obj.get_int_member (elementField.nomer);
+                        nomer = obj.get_int_member (ElementField.nomer);
                         message (nomer.to_string());
                         break;
-                    case elementField.name:
+                    case ElementField.name:
                         unowned Json.Node it = obj.get_member (name2);
-                        name = obj.get_string_member (elementField.name);
+                        name = obj.get_string_member (ElementField.name);
                         message (name);
                         break;
-                    case elementField.symbol:
+                    case ElementField.symbol:
                         unowned Json.Node it = obj.get_member (name2);
-                        symbol = obj.get_string_member (elementField.symbol);
+                        symbol = obj.get_string_member (ElementField.symbol);
                         message(symbol);
                         break;
-                    case elementField.latin_name:
+                    case ElementField.latin_name:
                         unowned Json.Node it = obj.get_member (name2);
-                        latin_name = obj.get_string_member (elementField.latin_name);
+                        latin_name = obj.get_string_member (ElementField.latin_name);
                         message(latin_name);
                         break;
-                    case elementField.period:
+                    case ElementField.period:
                         unowned Json.Node it = obj.get_member (name2);
-                        period = obj.get_int_member (elementField.period);
+                        period = obj.get_int_member (ElementField.period);
                         message(period.to_string ());
                         break;
-                    case elementField.group:
+                    case ElementField.group:
                         unowned Json.Node it = obj.get_member (name2);
-                        group = obj.get_int_member (elementField.group);
+                        group = obj.get_int_member (ElementField.group);
                         message(group.to_string ());
                         break;
-                    case elementField.weight:
+                    case ElementField.weight:
                         unowned Json.Node it = obj.get_member (name2);
-                        weight = obj.get_string_member (elementField.weight);
+                        weight = obj.get_string_member (ElementField.weight);
                         message(weight);
                         break;
-                    case elementField.density:
+                    case ElementField.density:
                         unowned Json.Node it = obj.get_member (name2);
-                        density = obj.get_string_member (elementField.density);
+                        density = obj.get_string_member (ElementField.density);
                         message(density);
                         break;
-                    case elementField.temperature_emelting:
+                    case ElementField.temperature_emelting:
                         unowned Json.Node it = obj.get_member (name2);
-                        temperature_emelting = obj.get_string_member (elementField.temperature_emelting);
+                        temperature_emelting = obj.get_string_member (ElementField.temperature_emelting);
                         message(temperature_emelting);
                         break;
-                    case elementField.temperature_boiling:
+                    case ElementField.temperature_boiling:
                         unowned Json.Node it = obj.get_member (name2);
-                        temperature_boiling = obj.get_string_member (elementField.temperature_boiling);
+                        temperature_boiling = obj.get_string_member (ElementField.temperature_boiling);
                         message(temperature_boiling);
                         break;
-                    case elementField.opening_year:
+                    case ElementField.opening_year:
                         unowned Json.Node it = obj.get_member (name2);
-                        opening_year = obj.get_string_member (elementField.opening_year);
+                        opening_year = obj.get_string_member (ElementField.opening_year);
                         message(opening_year);
                         break;
-                    case elementField.discover:
+                    case ElementField.discover:
                         unowned Json.Node it = obj.get_member (name2);
-                        discover = obj.get_string_member (elementField.discover);
+                        discover = obj.get_string_member (ElementField.discover);
                         message(discover);
                         break;
-                    case elementField.wiki:
+                    case ElementField.wiki:
                         unowned Json.Node it = obj.get_member (name2);
-                        wiki = obj.get_string_member (elementField.wiki);
+                        wiki = obj.get_string_member (ElementField.wiki);
                         message(wiki);
                         break;
-                    case elementField.properties:
+                    case ElementField.properties:
                         unowned Json.Node it = obj.get_member (name2);
-                        properties = obj.get_int_member (elementField.properties);
+                        properties = obj.get_int_member (ElementField.properties);
                         message(properties.to_string ());
                         break;
-                    case elementField.propertiesName:
+                    case ElementField.propertiesName:
                         unowned Json.Node it = obj.get_member (name2);
-                        propertiesName = obj.get_string_member (elementField.propertiesName);
+                        propertiesName = obj.get_string_member (ElementField.propertiesName);
                         message(propertiesName);
                         break;
                     default:

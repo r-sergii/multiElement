@@ -1,6 +1,6 @@
 namespace Multielement {
 
-    class PropertiesField {
+    public abstract class PropertiesField {
         public const string id = "id";
         public const string properties = "properties";
         public const string name = "name";
@@ -18,24 +18,24 @@ namespace Multielement {
         }
 
         public PropertiesModel.fromJson (Json.Node item) {
-            PropertiesField propertiesField = new PropertiesField();
+//            PropertiesField propertiesField = new PropertiesField();
 
             Json.Object obj = item.get_object ();
             foreach(unowned string name2 in obj.get_members ()) {
                 switch(name2) {
-                    case propertiesField.id:
+                    case PropertiesField.id:
                         unowned Json.Node it = obj.get_member (name2);
-                        id = obj.get_int_member (propertiesField.id);
+                        id = obj.get_int_member (PropertiesField.id);
                         message(id.to_string());
                         break;
-                    case propertiesField.properties:
+                    case PropertiesField.properties:
                         unowned Json.Node it = obj.get_member (name2);
-                        properties = obj.get_int_member (propertiesField.properties);
+                        properties = obj.get_int_member (PropertiesField.properties);
                         message(properties.to_string());
                         break;
-                    case propertiesField.name:
+                    case PropertiesField.name:
                         unowned Json.Node it = obj.get_member (name2);
-                        name = obj.get_string_member (propertiesField.name);
+                        name = obj.get_string_member (PropertiesField.name);
                         message (name);
                         break;
                     default:

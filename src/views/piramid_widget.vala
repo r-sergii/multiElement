@@ -9,6 +9,7 @@ namespace Multielement {
     class PiramidWidget
     {
 
+        private Adw.ColorScheme theme;
         //public Gtk.Label PiramidWidget (Window parent)
         public Gtk.DrawingArea PiramidWidget (MainWindow parent)
         {
@@ -22,6 +23,18 @@ namespace Multielement {
         const double DSIZE = 460.0;
 
         private void draw_func (Gtk.DrawingArea drawing_area, Cairo.Context context, int width, int height) {
+
+                MyLib.HexColor fon;
+                var app = GLib.Application.get_default();
+                theme = (app as Multielement.Application).theme;
+                if((theme == Adw.ColorScheme.FORCE_LIGHT) || (theme == Adw.ColorScheme.PREFER_LIGHT)) {
+                    //cr.set_source_rgb (0.95, 0.95, 0.95);
+                    fon = multiElement.Resourse.gUnknown;
+                } else {
+                    //cr.set_source_rgb (0.15, 0.15, 0.15);
+                    fon = multiElement.Resourse.gUnknownDark;
+                }
+
             	// Get necessary data:
 			    weak Gtk.StyleContext style_context = drawing_area.get_style_context ();
 //			    int height = drawing_area.get_allocated_height ();
@@ -101,7 +114,10 @@ namespace Multielement {
 	            roundRect(context, color, multiElement.Resourse.gNemetal,
 	                size_cell_width * 11, size_cell_height * 11,
 	                size_cell_width, size_cell_height, 10, "H");
-	            roundRect(context, color, multiElement.Resourse.gUnknown,
+//	            roundRect(context, color, multiElement.Resourse.gUnknown,
+	//                size_cell_width * 12, size_cell_height * 12,
+	  //              size_cell_width, size_cell_height, 10, "(H)");
+                roundRect(context, color, fon,
 	                size_cell_width * 12, size_cell_height * 12,
 	                size_cell_width, size_cell_height, 10, "(H)");
 	            roundRect(context, color, multiElement.Resourse.gReal,

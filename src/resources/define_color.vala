@@ -34,5 +34,5 @@ namespace multiElement.Resourse	{
 	const MyLib.HexColor gActan = { 0xFFFF,0x9999,0xCCCC };
 	const MyLib.HexColor gMetal = { 0xFFFF,0xC0C0,0xC0C0 };
 	const MyLib.HexColor gUnknown = { 0xFFFF,0xFFFF,0xFFFF };
-
+	const MyLib.HexColor gUnknownDark = { 0x0000,0x0000,0x0000 };
 }

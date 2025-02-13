@@ -21,6 +21,8 @@ namespace Multielement {
         //int
         private double radius;
 
+        private Adw.ColorScheme theme;
+
         //public Gtk.Label CircleWidget (Window parent)
         public Gtk.DrawingArea CircleWidget (MainWindow parent)
         {
@@ -32,6 +34,17 @@ namespace Multielement {
 
         private void draw_func (Gtk.DrawingArea drawing_area, Cairo.Context context, int width, int height)
         {
+                MyLib.HexColor fon;
+                var app = GLib.Application.get_default();
+                theme = (app as Multielement.Application).theme;
+                if((theme == Adw.ColorScheme.FORCE_LIGHT) || (theme == Adw.ColorScheme.PREFER_LIGHT)) {
+                    //cr.set_source_rgb (0.95, 0.95, 0.95);
+                    fon = multiElement.Resourse.gUnknown;
+                } else {
+                    //cr.set_source_rgb (0.15, 0.15, 0.15);
+                    fon = multiElement.Resourse.gUnknownDark;
+                }
+
 //        	    int height = drawing_area.get_allocated_height ();
 	//		    int width = drawing_area.get_allocated_width ();
 			    //double
@@ -151,49 +164,36 @@ namespace Multielement {
 
 // Null
 
-                //drawArcs8Null(widget, cUnknown, 50);
-                //ANGLE = isHorizontal ? 40 : 310;
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 40 : 310, RADIUS_08, 10);
-                //drawArcs8Null(widget, cUnknown, 40);
-                //ANGLE = isHorizontal ? 50 : 320;
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 50 : 320, RADIUS_08, 10);
-                //drawArcs8Null(widget, cUnknown, 30);
-                //ANGLE = isHorizontal ? 60 : 330;
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 60 : 330, RADIUS_08, 10);
-                //drawArcs8Null(widget, cUnknown, 20);
-                //ANGLE = isHorizontal ? 70 : 340;
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 70 : 340, RADIUS_08, 10);
-                //drawArcs8Null(widget, cUnknown, 10);
-//                ANGLE = isHorizontal ? 80 : 350;
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 80 : 350, RADIUS_08, 10);
-                //drawArcs8Null(widget, cUnknown, 0);
-//                ANGLE = isHorizontal ? 90 : 0;
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 90 : 0, RADIUS_08, 10);
-                //drawArcs8Null(widget, cUnknown, 350);
-                //ANGLE = isHorizontal ? 100 : 10;
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 100 : 10, RADIUS_08, 10);
-                //drawArcs8Null(widget, cUnknown, 340);
-//                ANGLE = isHorizontal ? 110 : 20;
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 110 : 20, RADIUS_08, 10);
-                //drawArcs8Null(widget, cUnknown, 330);
-//                ANGLE = isHorizontal ? 120 : 30;
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 120 : 30, RADIUS_08, 10);
-                //drawArcs8Null(widget, cUnknown, 320);
-//                ANGLE = isHorizontal ? 130 : 40;
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 130 : 40, RADIUS_08, 10);
-                //drawArcs8Null(widget, cUnknown, 230);
-//                ANGLE = isHorizontal ? 270 : 130;
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 270 : 130, RADIUS_08, 10);
-                //drawArcs8Null(widget, cUnknown, 220);
-//                ANGLE = isHorizontal ? 280 : 140;
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 280 : 140, RADIUS_08, 10);
-                //drawArcs8Null(widget, cUnknown, 210);
-//                ANGLE = isHorizontal ? 290 : 150;
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 290 : 150, RADIUS_08, 10);
-                //drawArcs8Null(widget, cUnknown, 200);
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 300 : 160, RADIUS_08, 10);
-                //drawArcs8Null(widget, cUnknown, 190);
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 310 : 170, RADIUS_08, 10);
+//                drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 40 : 310, RADIUS_08, 10);
+  //              drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 50 : 320, RADIUS_08, 10);
+    //            drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 60 : 330, RADIUS_08, 10);
+      //          drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 70 : 340, RADIUS_08, 10);
+        //        drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 80 : 350, RADIUS_08, 10);
+          //      drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 90 : 0, RADIUS_08, 10);
+            //    drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 100 : 10, RADIUS_08, 10);
+//                drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 110 : 20, RADIUS_08, 10);
+  //              drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 120 : 30, RADIUS_08, 10);
+    //            drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 130 : 40, RADIUS_08, 10);
+      //          drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 270 : 130, RADIUS_08, 10);
+        //        drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 280 : 140, RADIUS_08, 10);
+          //      drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 290 : 150, RADIUS_08, 10);
+            //    drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 300 : 160, RADIUS_08, 10);
+              //  drawArcs1(context, color, multiElement.Resourse.gUnknown, isHorizontal ? 310 : 170, RADIUS_08, 10);
+                drawArcs1(context, color, fon, isHorizontal ? 40 : 310, RADIUS_08, 10);
+                drawArcs1(context, color, fon, isHorizontal ? 50 : 320, RADIUS_08, 10);
+                drawArcs1(context, color, fon, isHorizontal ? 60 : 330, RADIUS_08, 10);
+                drawArcs1(context, color, fon, isHorizontal ? 70 : 340, RADIUS_08, 10);
+                drawArcs1(context, color, fon, isHorizontal ? 80 : 350, RADIUS_08, 10);
+                drawArcs1(context, color, fon, isHorizontal ? 90 : 0, RADIUS_08, 10);
+                drawArcs1(context, color, fon, isHorizontal ? 100 : 10, RADIUS_08, 10);
+                drawArcs1(context, color, fon, isHorizontal ? 110 : 20, RADIUS_08, 10);
+                drawArcs1(context, color, fon, isHorizontal ? 120 : 30, RADIUS_08, 10);
+                drawArcs1(context, color, fon, isHorizontal ? 130 : 40, RADIUS_08, 10);
+                drawArcs1(context, color, fon, isHorizontal ? 270 : 130, RADIUS_08, 10);
+                drawArcs1(context, color, fon, isHorizontal ? 280 : 140, RADIUS_08, 10);
+                drawArcs1(context, color, fon, isHorizontal ? 290 : 150, RADIUS_08, 10);
+                drawArcs1(context, color, fon, isHorizontal ? 300 : 160, RADIUS_08, 10);
+                drawArcs1(context, color, fon, isHorizontal ? 310 : 170, RADIUS_08, 10);
 
 
                 //drawArcs7(widget, cSheloch, 0);//, 19);//87
@@ -345,41 +345,33 @@ namespace Multielement {
                 //drawArcs4(widget, cReal, 340);//, 359);//36
                 drawArcs1(context, color, multiElement.Resourse.gReal, 0, RADIUS_04);
 
-                //drawArcs3(widget, cSheloch, 0);//, 19);//11
                 drawArcs1(context, color, multiElement.Resourse.gSheloch, 340, RADIUS_03);
-                //drawArcs3(widget, cShelLand, 20);//, 39);//12
                 drawArcs1(context, color, multiElement.Resourse.gShelLand, 320, RADIUS_03);
-                //drawArcs3Null(widget, cUnknown, 40);//, 59);
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, 300, RADIUS_03);
-                //drawArcs3Null(widget, cUnknown, 60);//, 79);
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, 280, RADIUS_03);
-                //drawArcs3Null(widget, cUnknown, 80);//, 99);
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, 260, RADIUS_03);
-                //drawArcs3Null(widget, cUnknown, 100);//, 119);
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, 240, RADIUS_03);
-                //drawArcs3Null(widget, cUnknown, 120);//, 139);
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, 220, RADIUS_03);
-                //drawArcs3Null(widget, cUnknown, 140);//, 159);
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, 200, RADIUS_03);
-                //drawArcs3Null(widget, cUnknown, 160);//, 179);
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, 180, RADIUS_03);
-                //drawArcs3Null(widget, cUnknown, 180);//, 199);
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, 160, RADIUS_03);
-                //drawArcs3Null(widget, cUnknown, 200);//, 219);
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, 140, RADIUS_03);
-                //drawArcs3Null(widget, cUnknown, 220);//, 239);
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, 120, RADIUS_03);
-                //drawArcs3(widget, cPostmetal, 240);//, 259);//13
+//                drawArcs1(context, color, multiElement.Resourse.gUnknown, 300, RADIUS_03);
+  //              drawArcs1(context, color, multiElement.Resourse.gUnknown, 280, RADIUS_03);
+    //            drawArcs1(context, color, multiElement.Resourse.gUnknown, 260, RADIUS_03);
+      //          drawArcs1(context, color, multiElement.Resourse.gUnknown, 240, RADIUS_03);
+        //        drawArcs1(context, color, multiElement.Resourse.gUnknown, 220, RADIUS_03);
+          //      drawArcs1(context, color, multiElement.Resourse.gUnknown, 200, RADIUS_03);
+//                drawArcs1(context, color, multiElement.Resourse.gUnknown, 180, RADIUS_03);
+  //              drawArcs1(context, color, multiElement.Resourse.gUnknown, 160, RADIUS_03);
+    //            drawArcs1(context, color, multiElement.Resourse.gUnknown, 140, RADIUS_03);
+      //          drawArcs1(context, color, multiElement.Resourse.gUnknown, 120, RADIUS_03);
+                drawArcs1(context, color, fon, 300, RADIUS_03);
+                drawArcs1(context, color, fon, 280, RADIUS_03);
+                drawArcs1(context, color, fon, 260, RADIUS_03);
+                drawArcs1(context, color, fon, 240, RADIUS_03);
+                drawArcs1(context, color, fon, 220, RADIUS_03);
+                drawArcs1(context, color, fon, 200, RADIUS_03);
+                drawArcs1(context, color, fon, 180, RADIUS_03);
+                drawArcs1(context, color, fon, 160, RADIUS_03);
+                drawArcs1(context, color, fon, 140, RADIUS_03);
+                drawArcs1(context, color, fon, 120, RADIUS_03);
                 drawArcs1(context, color, multiElement.Resourse.gPostmetal, 100, RADIUS_03);
-                //drawArcs3(widget, cPolimetal, 260);//, 279);//14
                 drawArcs1(context, color, multiElement.Resourse.gPolimetal, 80, RADIUS_03);
-                //drawArcs3(widget, cNemetal, 280);//, 299);//15
                 drawArcs1(context, color, multiElement.Resourse.gNemetal, 60, RADIUS_03);
-                //drawArcs3(widget, cNemetal, 300);//, 319);//16
                 drawArcs1(context, color, multiElement.Resourse.gNemetal, 40, RADIUS_03);
-                //drawArcs3(widget, cGalogen, 320);//, 339);//17
                 drawArcs1(context, color, multiElement.Resourse.gGalogen, 20, RADIUS_03);
-                //drawArcs3(widget, cReal, 340);//, 359);//18
                 drawArcs1(context, color, multiElement.Resourse.gReal, 0, RADIUS_03);
 
                 //drawArcs2(widget, cSheloch, 0);//, 19);//3
@@ -399,27 +391,25 @@ namespace Multielement {
                 //drawArcs2(widget, cReal, 340);//, 359);//10
                 drawArcs1(context, color, multiElement.Resourse.gReal, 0, RADIUS_02);
 
-                //drawArcs1(widget, cNemetal, 0);//, 19);//1
                 drawArcs1(context, color, multiElement.Resourse.gNemetal, 340, RADIUS_01);
-                //drawArcs1Null(widget, cUnknown, 30);//, 39);//20
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, 320, RADIUS_01);
-                //drawArcs1Null(widget, cUnknown, 240);//, 259);
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, 100, RADIUS_01);
-                //drawArcs1Null(widget, cUnknown, 260);//, 279);
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, 80, RADIUS_01);
-                //drawArcs1Null(widget, cUnknown, 280);//, 299);
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, 60, RADIUS_01);
-                //drawArcs1Null(widget, cUnknown, 300);//, 319);
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, 40, RADIUS_01);
-                //drawArcs1Null(widget, cUnknown, 320);//, 339);
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, 20, RADIUS_01);
-                //drawArcs1(widget, cReal, 330);//, 359);//2//340
+//                drawArcs1(context, color, multiElement.Resourse.gUnknown, 320, RADIUS_01);
+  //              drawArcs1(context, color, multiElement.Resourse.gUnknown, 100, RADIUS_01);
+    //            drawArcs1(context, color, multiElement.Resourse.gUnknown, 80, RADIUS_01);
+      //          drawArcs1(context, color, multiElement.Resourse.gUnknown, 60, RADIUS_01);
+        //        drawArcs1(context, color, multiElement.Resourse.gUnknown, 40, RADIUS_01);
+          //      drawArcs1(context, color, multiElement.Resourse.gUnknown, 20, RADIUS_01);
+                drawArcs1(context, color, fon, 320, RADIUS_01);
+                drawArcs1(context, color, fon, 100, RADIUS_01);
+                drawArcs1(context, color, fon, 80, RADIUS_01);
+                drawArcs1(context, color, fon, 60, RADIUS_01);
+                drawArcs1(context, color, fon, 40, RADIUS_01);
+                drawArcs1(context, color, fon, 20, RADIUS_01);
                 drawArcs1(context, color, multiElement.Resourse.gReal, 0, RADIUS_01);
-                //drawArcs0Null(widget, cUnknown, 0);//, 19);
-                //drawArcs0Null(widget, cUnknown, 330);//, 359);//340
 
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, 340, RADIUS_00);
-                drawArcs1(context, color, multiElement.Resourse.gUnknown, 0, RADIUS_00);
+//                drawArcs1(context, color, multiElement.Resourse.gUnknown, 340, RADIUS_00);
+  //              drawArcs1(context, color, multiElement.Resourse.gUnknown, 0, RADIUS_00);
+                drawArcs1(context, color, fon, 340, RADIUS_00);
+                drawArcs1(context, color, fon, 0, RADIUS_00);
 
 
                 calcCoordinateElement(context, isHorizontal ? 40 : 180, RADIUS_0A, "Lr", 10);
