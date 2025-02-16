@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/ua/inf/multiapps/multiElement">
+    <file>windows/language_window/language_window.ui</file>
     <file>widgets/theme_switcher/theme_switcher.ui</file>
     <file>gtk/help-overlay.ui</file>
     <file alias="items_widget.css">widgets/items_widget/items_widget.css</file>

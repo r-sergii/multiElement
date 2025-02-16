@@ -23,23 +23,31 @@ namespace Multielement {
         private Multielement.ElementService _elementService;
         private Multielement.PropertiesService _propertiesService;
 
+        private Multielement.SettingsService _settingsService;
+
         public Application () {
             Object (application_id: "ua.inf.multiapps.multiElement", flags: ApplicationFlags.FLAGS_NONE);
         }
 
         construct {
             ActionEntry[] action_entries = {
+//                { "towns", this.on_towns_action },
+                { "language", this.on_language_action },
                 { "about", this.on_about_action },
                 { "preferences", this.on_preferences_action },
                 { "quit", this.quit }
             };
             this.add_action_entries (action_entries, this);
+            this.set_accels_for_action ("app.language", {"<primary>l"});
+//            this.set_accels_for_action ("app.towns", {"<primary>t"});
+            this.set_accels_for_action ("app.about", {"<primary>a"});
             this.set_accels_for_action ("app.quit", {"<primary>q"});
 
             var set_theme_action = new GLib.PropertyAction ("set_app_theme", this, "theme");
             set_theme_action.notify.connect (this.set_app_theme);
             this.add_action (set_theme_action);
 
+            _settingsService = new SettingsService ();
             _elementService = new ElementService ();
             _propertiesService = new PropertiesService ();
         }
@@ -54,6 +62,15 @@ namespace Multielement {
 
             var win = this.active_window;
             if (win == null) {
+
+//                var connectService = new ConnectService ();
+  //              bool result = connectService.connect ();
+    //            if (result == false) {
+      //              var noconnect = new Multielement.NoConnectWindow (this);
+        //            noconnect.present ();
+          //          return;
+            //    }
+
                 var splash = new Multielement.SplashWindow (this);
                 splash.present ();
                 _elementService.getItems ();
@@ -78,6 +95,12 @@ namespace Multielement {
         public Multielement.PropertiesService propertiesService {
             get {
                 return _propertiesService;
+            }
+        }
+
+        public Multielement.SettingsService settingsService {
+            get {
+                return _settingsService;
             }
         }
 
@@ -118,7 +141,7 @@ namespace Multielement {
                 application_name = "multiElement",
                 application_icon = "ua.inf.multiapps.multiElement",
                 version = "0.1.0",
-                copyright = "Copyright © 2024 Serhii Rudchenko",
+                copyright = "Copyright © 2025 Serhii Rudchenko",
 //                license_type = License.GPL_3_0,
                 developer_name = "Serhii Rudchenko",
                 developers = {"Serhii Rudchenko email:sergej.rudchenko@gmail.com"},
@@ -136,6 +159,32 @@ namespace Multielement {
 
         private void set_app_theme () {
             Adw.StyleManager.get_default ().set_color_scheme (this.theme);
+        }
+/*
+        private void on_towns_action () {
+            message ("towns action show activated");
+
+//            var towns = new Multiclock.TownsWindow ();
+  //          towns.set_transient_for (this.active_window);
+   //         towns.show ();
+        }
+*/
+        private void on_language_action () {
+            message ("language action show activated");
+
+            var language = new Multielement.LanguageWindow (this.active_window as Multielement.MainWindow);
+            language.set_transient_for (this.active_window);
+            language.show ();
+
+        }
+
+        private void on_quit () {
+//            this.get_windows ().foreach ((obj) => {
+  //              var win = (Multiclock.MainWindow) obj;
+    //            win.close_all ();
+      //      });
+            Multielement.MainWindow win = this.active_window as Multielement.MainWindow;
+            win.on_close_application ();
         }
     }
 }

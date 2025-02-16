@@ -31,6 +31,10 @@ namespace Multielement {
     //        this.bind_property("maximized", this, "isMaximized", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE);
  	    }
 
+        public void init_menu () {
+
+        }
+
  	    construct{
 
 //////          string dataCSS = "green {background: green;}; purple {background: purple;}; "
@@ -158,12 +162,16 @@ namespace Multielement {
             var item_theme = new GLib.MenuItem (_("custom"), null);//"app.set_app_theme");
             item_theme.set_attribute ("custom", "s", "theme");
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            var item_preferences = new GLib.MenuItem (_("Preferences"), "app.preferences");
+//            var item_preferences = new GLib.MenuItem (_("Preferences"), "app.preferences");
+            var item_language = new GLib.MenuItem (_("locale.language"), "app.language");
+//            var item_towns = new GLib.MenuItem (_("locale.towns"), "app.towns");
             var item_about = new GLib.MenuItem (_("About multiElement"), "app.about");
             var item_quit = new GLib.MenuItem (_("Quit"), "app.quit");
 
             menu.append_item (item_theme);
-            menu.append_item (item_preferences);
+//            menu.append_item (item_preferences);
+            menu.append_item (item_language);
+//            menu.append_item (item_towns);
             menu.append_item (item_about);
             menu.append_item (item_quit);
 
@@ -224,7 +232,7 @@ namespace Multielement {
                 application_icon = "ua.inf.multiapps.multiElement",
                 //application_icon = "circle",
                 version = "0.1.0",
-                copyright = "Copyright © 2024 Serhii Rudchenko",
+                copyright = "Copyright © 2025 Serhii Rudchenko",
 //                license_type = License.GPL_3_0,
                 developer_name = "Serhii Rudchenko",
                 developers = {"Serhii Rudchenko email:sergej.rudchenko@gmail.com"},
@@ -236,46 +244,11 @@ namespace Multielement {
             win.show ();
         }
 
-        private bool on_close_application(){
+        public bool on_close_application () {
             var app = GLib.Application.get_default();
-/*            GLib.File file = GLib.File.new_for_path(directory_path+"/"+item);
-            if(item != "" && file.query_exists()){
-            string note_text;
-            try {
-                FileUtils.get_contents (file.get_path(), out note_text);
-            } catch (Error e) {
-               stderr.printf ("Error: %s\n", e.message);
-            }
-            string edit_text = text_view.buffer.text;
-            if(note_text != edit_text){
-                var save_changes_dialog = new Adw.MessageDialog(this, _("Changes are not saved"), _("Save changes to the current note before exiting the program?"));
-                save_changes_dialog.add_response("cancel", _("_Cancel"));
-                save_changes_dialog.add_response("ok", _("_OK"));
-                save_changes_dialog.set_default_response("ok");
-                save_changes_dialog.set_close_response("cancel");
-                save_changes_dialog.set_response_appearance("ok", SUGGESTED);
-                save_changes_dialog.show();
-                save_changes_dialog.response.connect((response) => {
-                    if (response == "ok") {
-                        try {
-                             FileUtils.set_contents (file.get_path(), edit_text);
-                        } catch (Error e) {
-                             stderr.printf ("Error: %s\n", e.message);
-                        }
-                    }
-                    save_changes_dialog.close();
-                    app.quit();
-               });
-                }else{
-                    app.quit();
-                }
-            }else{
-                 app.quit();
-           }
-           */
-           call_are_exit_dialog (app);
-           //app.quit();
-           return true;
+            call_are_exit_dialog (app);
+            //app.quit();
+            return true;
         }
 
         private void call_save_changes_dialog () {
