@@ -5,6 +5,8 @@ using MyLib;
 
 namespace Multielement {
 
+    public enum ItemView {Small, Normal, Large}
+
     public class PeriodItem : Gtk.Frame {
 
         private string Text;
@@ -41,7 +43,7 @@ namespace Multielement {
 	    private string Text;
 	    private string Weight;
 
-      public ElementItem (string _Nomer, string _Text, string _Weight, string gColor, MainWindow parent)
+      public ElementItem (string _Nomer, string _Text, string _Weight, string gColor, MainWindow parent, ItemView iView = ItemView.Normal)
       {
 	      Nomer = _Nomer;
 	      Text = _Text;
@@ -57,13 +59,16 @@ namespace Multielement {
           Gtk.Box vBox = new Gtk.Box (Gtk.Orientation.VERTICAL, 1);
 
 	      vBox.set_homogeneous (false);
-	      lNomer.set_markup ("<span size='6000'>" + Nomer + "</span>");
-	      lNomer.set_justify (Justification.RIGHT);
-	      lNomer.remove_css_class(multiElement.Resourse.cDefault);
-	      lNomer.add_css_class(gColor);
+	      if((iView == ItemView.Normal) || (iView == ItemView.Large))
+          {
+	          lNomer.set_markup ("<span size='6000'>" + Nomer + "</span>");
+	          lNomer.set_justify (Justification.RIGHT);
+	          lNomer.remove_css_class(multiElement.Resourse.cDefault);
+	          lNomer.add_css_class(gColor);
 
-			    //this
-	      vBox.append (lNomer);
+			        //this
+	          vBox.append (lNomer);
+          }
 
 	      lName.set_markup ("<span size='12000'>" + Text + "</span>");
 	      lName.set_justify (Justification.LEFT);
@@ -73,16 +78,18 @@ namespace Multielement {
 
 			    //this
 	      vBox.append (lName);
-/*
-	      lWeight.set_markup ("<span size='8000'>" + Weight + "</span>");
-	      lWeight.set_justify (Justification.LEFT);
-          lWeight.set_use_markup(true);
-          lWeight.remove_css_class(multiElement.Resourse.cDefault);
-          lWeight.add_css_class(gColor);
 
-			    //this
-          vBox.append (lWeight);
-*/
+          if(iView == ItemView.Large)
+          {
+	          lWeight.set_markup ("<span size='8000'>" + Weight + "</span>");
+	          lWeight.set_justify (Justification.LEFT);
+              lWeight.set_use_markup(true);
+              lWeight.remove_css_class(multiElement.Resourse.cDefault);
+              lWeight.add_css_class(gColor);
+
+			        //this
+              vBox.append (lWeight);
+          }
 //	      ConnectCall(Nomer, frm, parent);
 	      this.set_label ((string)null);
           this.set_child (vBox);

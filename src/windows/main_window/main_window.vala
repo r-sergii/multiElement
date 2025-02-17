@@ -8,6 +8,7 @@ namespace Multielement {
     	private Gtk.Notebook nb;
     	private ShortWidget shortWidget;
         private ExtendedWidget extendedWidget;
+        private int selectedPage;
 
     	private MyLib.ThemeSwitcher theme_switcher;
 
@@ -26,10 +27,63 @@ namespace Multielement {
  	    }
 
         public void init_menu () {
+            var app = GLib.Application.get_default();
+            var locale = (app as Multielement.Application).settingsService.locale;
 
+            var menu = new GLib.Menu();
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            var item_theme = new GLib.MenuItem (_("custom"), null);//"app.set_app_theme");
+            item_theme.set_attribute ("custom", "s", "theme");
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//            var item_preferences = new GLib.MenuItem (_("Preferences"), "app.preferences");
+            var item_language = new GLib.MenuItem (_(locale.language), "app.language");
+//            var item_towns = new GLib.MenuItem (_(locale.towns), "app.towns");
+            var item_about = new GLib.MenuItem (_(locale.about +" multiElement"), "app.about");
+            var item_quit = new GLib.MenuItem (_(locale.exit_), "app.quit");
+
+//            message (locale.locale);
+
+            menu.append_item (item_theme);
+//            menu.append_item (item_preferences);
+            menu.append_item (item_language);
+//            menu.append_item (item_towns);
+            menu.append_item (item_about);
+            menu.append_item (item_quit);
+
+//            var pop = (Gtk.PopoverMenu) this.menu_button.get_popover ();
+            var pop = new Gtk.PopoverMenu.from_model(menu);
+            pop.set_menu_model (menu);
+
+            this.theme_switcher = new MyLib.ThemeSwitcher ();
+            pop.add_child (this.theme_switcher, "theme");
+
+            message ( (list_box.get_row_at_index (0) as Adw.ActionRow).title );
+            message ( (list_box.get_row_at_index (1) as Adw.ActionRow).title );
+            message ( (list_box.get_row_at_index (2) as Adw.ActionRow).title );
+            message ( (list_box.get_row_at_index (3) as Adw.ActionRow).title );
+            message ( (list_box.get_row_at_index (4) as Adw.ActionRow).title );
+            message ( (list_box.get_row_at_index (5) as Adw.ActionRow).title );
+
+            split_view.get_content().set_title((list_box.get_row_at_index (selectedPage) as Adw.ActionRow).title);
+
+            (list_box.get_row_at_index (0) as Adw.ActionRow).title = locale.short_name;
+            (list_box.get_row_at_index (0) as Adw.ActionRow).subtitle = locale.short_table;
+            (list_box.get_row_at_index (1) as Adw.ActionRow).title = locale.extended;
+            (list_box.get_row_at_index (1) as Adw.ActionRow).subtitle = locale.extended_table;
+            (list_box.get_row_at_index (2) as Adw.ActionRow).title = locale.circle;
+            (list_box.get_row_at_index (2) as Adw.ActionRow).subtitle = locale.circle_table;
+            (list_box.get_row_at_index (3) as Adw.ActionRow).title = locale.piramid;
+            (list_box.get_row_at_index (3) as Adw.ActionRow).subtitle = locale.piramid_table;
+            (list_box.get_row_at_index (4) as Adw.ActionRow).title = "Adomah";
+            (list_box.get_row_at_index (4) as Adw.ActionRow).subtitle = locale.adomah_table;
+            (list_box.get_row_at_index (5) as Adw.ActionRow).title = "Adomah";
+            (list_box.get_row_at_index (5) as Adw.ActionRow).subtitle = locale.adomah_table;
         }
 
  	    construct{
+            selectedPage = 0;
+            var app = GLib.Application.get_default();
+            var locale = (app as Multielement.Application).settingsService.locale;
 
 //////          string dataCSS = "green {background: green;}; purple {background: purple;}; "
 //////          + "pink {background: pink;}; lightgrey {background: lightgrey;}; palegreen {background: green;}";
@@ -75,43 +129,43 @@ namespace Multielement {
 	        nb.append_page(adomahHorizWidget.AdomahHorizWidget (this), null);
 
             var shortRow = new Adw.ActionRow () {
-                title = "Short",
-                subtitle = "short table",
+                title = locale.short_name, //"Short",
+                subtitle = locale.short_table, //"short table",
                 icon_name = "short_periodic"
             };
             list_box.append (shortRow);
 
             var extendedRow = new Adw.ActionRow () {
-                title = "Extended",
-                subtitle = "extended table",
+                title = locale.extended, // "Extended",
+                subtitle = locale.extended_table, // "extended table",
                 icon_name = "extended_periodic"
             };
             list_box.append (extendedRow);
 
             var circleRow = new Adw.ActionRow () {
-                title = "Circle",
-                subtitle = "circle table",
+                title = locale.circle, //"Circle",
+                subtitle = locale.circle_table, //"circle table",
                 icon_name = "circle"
             };
             list_box.append (circleRow);
 
             var piramidRow = new Adw.ActionRow () {
-                title = "Piramid",
-                subtitle = "piramid table",
+                title = locale.piramid, // "Piramid",
+                subtitle = locale.piramid_table, //"piramid table",
                 icon_name = "piramid_source"
             };
             list_box.append (piramidRow);
 
             var adomahRow = new Adw.ActionRow () {
-                title = "Adomah Vertical",
-                subtitle = "adomah table",
+                title = "Adomah",
+                subtitle = locale.adomah_table, // "adomah table",
                 icon_name = "adomah_vert"
             };
             list_box.append (adomahRow);
 
             var adomahHorizRow = new Adw.ActionRow () {
-                title = "Adomah Horizontal",
-                subtitle = "adomah table",
+                title = "Adomah",
+                subtitle = locale.adomah_table, // "adomah table",
                 icon_name = "adomah_horiz"
             };
             list_box.append (adomahHorizRow);
@@ -147,7 +201,7 @@ namespace Multielement {
 
             this.theme_switcher = new MyLib.ThemeSwitcher ();
 
-            var app = GLib.Application.get_default();
+///////            var app = GLib.Application.get_default();
             app.add_action(preferences_action);
             app.add_action(about_action);
             app.add_action(quit_action);
@@ -157,10 +211,10 @@ namespace Multielement {
             item_theme.set_attribute ("custom", "s", "theme");
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //            var item_preferences = new GLib.MenuItem (_("Preferences"), "app.preferences");
-            var item_language = new GLib.MenuItem (_("locale.language"), "app.language");
-//            var item_towns = new GLib.MenuItem (_("locale.towns"), "app.towns");
-            var item_about = new GLib.MenuItem (_("About multiElement"), "app.about");
-            var item_quit = new GLib.MenuItem (_("Quit"), "app.quit");
+            var item_language = new GLib.MenuItem (_(locale.language), "app.language");
+//            var item_towns = new GLib.MenuItem (_(locale.towns), "app.towns");
+            var item_about = new GLib.MenuItem (_(locale.about +" multiElement"), "app.about");
+            var item_quit = new GLib.MenuItem (_(locale.exit_), "app.quit");
 
             menu.append_item (item_theme);
 //            menu.append_item (item_preferences);
@@ -264,9 +318,14 @@ namespace Multielement {
         }
 
         private void call_are_exit_dialog (GLib.Application app) {
-            var are_exit_dialog = new Adw.MessageDialog(this, _("Exit?"), _("Are you sure you want to exit?"));
-            are_exit_dialog.add_response("cancel", _("_Cancel"));
-            are_exit_dialog.add_response("ok", _("_Exit"));
+            var locale = (app as Multielement.Application).settingsService.locale;
+
+//            var are_exit_dialog = new Adw.MessageDialog(this, _("Exit?"), _("Are you sure you want to exit?"));
+  //          are_exit_dialog.add_response("cancel", _("_Cancel"));
+    //        are_exit_dialog.add_response("ok", _("_Exit"));
+            var are_exit_dialog = new Adw.MessageDialog(this, _(locale.exit_), _(locale.are_exit));
+            are_exit_dialog.add_response("cancel", _(locale.cancel));
+            are_exit_dialog.add_response("ok", _(locale.exit_));
             are_exit_dialog.set_default_response("ok");
             are_exit_dialog.set_close_response("cancel");
             are_exit_dialog.set_response_appearance("ok", SUGGESTED);
@@ -285,19 +344,32 @@ namespace Multielement {
         }
 
         private void on_select_item () {
+            var app = GLib.Application.get_default();
+            var locale = (app as Multielement.Application).settingsService.locale;
+
             var list = new GLib.List<string>();
-            list.append("Short");
-            list.append("Extended");
-            list.append("Circle");
-            list.append("Piramid");
-            list.append("Adomah Vertical");
-            list.append("Adomah Horizontal");
+//            list.append("Short");
+  //          list.append("Extended");
+    //        list.append("Circle");
+      //      list.append("Piramid");
+        //    list.append("Adomah Vertical");
+          //  list.append("Adomah Horizontal");
+            list.append(locale.short_name);
+            list.append(locale.extended);
+            list.append(locale.circle);
+            list.append(locale.piramid);
+            list.append(locale.adomah_vertical);
+            list.append(locale.adomah_horizontal);
 //            ["Short", "Extended", "Circle", "Piramid", "Adomah Vertical", "Adomah Horizontal"];
             var selection = list_box.get_selected_row();
             if (!selection.is_selected()) {
                 return;
             }
 
+            int index = selection.get_index ();
+            message (index.to_string ());
+            nb.set_current_page (index);
+            selectedPage = index;
             GLib.Value value = "";
             selection.get_property("title", ref value);
             var item = value.get_string();
@@ -314,6 +386,10 @@ namespace Multielement {
           //      }
             //});
             //message (item);
+
+            ////////////////////////////////////
+            return;
+            ////////////////////////////////////
 
             switch(item) {
                 case "Short":

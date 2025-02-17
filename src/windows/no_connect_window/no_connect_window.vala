@@ -18,7 +18,7 @@ namespace Multielement {
             //get current theme
             var app = GLib.Application.get_default();
 //            var theme = (app as Multiclock.Application).theme;
-            var locale = (app as Multiclock.Application).settingsService.locale;
+            var locale = (app as Multielement.Application).settingsService.locale;
 
             Gtk.Label title = new Gtk.Label("multiElement");
             title.set_markup ("<span size='22000'> multiElement </span>");

@@ -30,16 +30,17 @@ namespace Multielement {
                 + ";" + temp.group + ";" + temp.period + ";" + temp.row
                 + ";" + temp.lanthanides + ";" + temp.actinides
                 + ";" + temp.halogens + ";" + temp.noble_gases
+                + ";" + temp.adomah_horizontal
                 + ";" + temp.non_metal + ";" + temp.alkali_metals
                 + ";" + temp.alkaline_earth_metals + ";" + temp.transition_metals
                 + ";" + temp.post_transition_metals + ";" + temp.semimetals
                 + ";" + temp.short_name + ";" + temp.extended + ";" + temp.circle + ";" + temp.piramid
-                + ";" + temp.adomah_vertical + ";" + temp.adomah_horizontal
+                + ";" + temp.adomah_vertical //+ ";" + temp.adomah_horizontal
                 + ";" + temp.short_table + ";" + temp.extended_table + ";" + temp.circle_table
                 + ";" + temp.piramid_table + ";" + temp.adomah_table;
 
 //            message (translateModel.lang);
-//            message (translateModel.words);
+            message (translateModel.words);
             var translateProvider = new TranslatorProvider ();
             translateProvider.getItems ( translateModel, listTranslator );
             //_currentLocale.locale = translateModel.lang;
@@ -56,7 +57,7 @@ namespace Multielement {
 //            message (_currentLocale.locale);
 
             for(int i = 0;i<listTranslator.size;i++) {
-//                message(listTranslator[i].translation);
+                message(listTranslator[i].translation);
                 switch (listTranslator[i].original)
                 {
                     case "Loading...":

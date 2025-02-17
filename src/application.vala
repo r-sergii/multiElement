@@ -37,6 +37,8 @@ namespace Multielement {
         public override void activate () {
             base.activate ();
 
+            init_app_theme ();
+
             // Css settings
             var provider = new Gtk.CssProvider ();
             provider.load_from_resource ("/io/github/r_sergii/multiElement/theme_switcher.css");
@@ -45,13 +47,13 @@ namespace Multielement {
             var win = this.active_window;
             if (win == null) {
 
-//                var connectService = new ConnectService ();
-  //              bool result = connectService.connect ();
-    //            if (result == false) {
-      //              var noconnect = new Multielement.NoConnectWindow (this);
-        //            noconnect.present ();
-          //          return;
-            //    }
+                var connectService = new ConnectService ();
+                bool result = connectService.connect ();
+                if (result == false) {
+                    var noconnect = new Multielement.NoConnectWindow (this);
+                    noconnect.present ();
+                    return;
+                }
 
                 var splash = new Multielement.SplashWindow (this);
                 splash.present ();
@@ -139,8 +141,60 @@ namespace Multielement {
             message ("app.preferences action activated");
         }
 
+        private void init_app_theme () {
+            var th = settingsService.theme;
+            switch (th.theme) {
+                case 0: theme = Adw.ColorScheme.DEFAULT;
+                        break;
+                case 1: theme = Adw.ColorScheme.FORCE_LIGHT;
+                        break;
+                case 2: theme = Adw.ColorScheme.FORCE_DARK;
+                        break;
+                case 3: theme = Adw.ColorScheme.PREFER_LIGHT;
+                        break;
+                case 4: theme = Adw.ColorScheme.PREFER_DARK;
+                        break;
+                default: theme = Adw.ColorScheme.DEFAULT;
+                        break;
+            }
+            Adw.StyleManager.get_default ().set_color_scheme (this.theme);
+        }
+
         private void set_app_theme () {
             Adw.StyleManager.get_default ().set_color_scheme (this.theme);
+//            message (this.theme.to_string());
+
+            var th = settingsService.theme;
+
+            switch(theme) {
+                case Adw.ColorScheme.FORCE_LIGHT:
+//                    message ("FL");
+                    th.theme = 1;
+                    break;
+                case Adw.ColorScheme.FORCE_DARK:
+//                    message ("FD");
+                    th.theme = 2;
+                    break;
+                case Adw.ColorScheme.PREFER_LIGHT:
+//                    message ("PFL");
+                    th.theme = 3;
+                    break;
+                case Adw.ColorScheme.PREFER_DARK:
+//                    message ("PFL");
+                    th.theme = 4;
+                    break;
+                case Adw.ColorScheme.DEFAULT:
+//                    message ("DEF");
+                    th.theme = 0;
+                    break;
+                default:
+//                    message ("default");
+                    th.theme = 0;
+                    break;
+            }
+//            th.toSettings ();
+            settingsService.writeTheme ();
+
         }
 /*
         private void on_towns_action () {

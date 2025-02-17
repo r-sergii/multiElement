@@ -4,6 +4,7 @@ multielement_sources = [
   'windows/main_window/main_window.vala',
   'windows/language_window/language_window.vala',
   'windows/splash_window/splash_window.vala',
+  'windows/no_connect_window/no_connect_window.vala',
   'views/short_widget.vala',
   'views/extended_widget.vala',
   'views/circle_widget.vala',
