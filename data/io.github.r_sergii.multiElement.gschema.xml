@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="multiElement">
-	<schema id="ua.inf.multiapps.multiElement" path="/ua/inf/multiapps/multiElement/">
+	<schema id="io.github.r_sergii.multiElement" path="/io/github/r_sergii/multiElement/">
 	  <key name="theme" type="i">
 	    <default>2</default>
 	  </key>

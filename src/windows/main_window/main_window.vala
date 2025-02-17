@@ -1,9 +1,3 @@
-/* window.vala
- *
- * Copyright 2024 Serhii Rudchenko
- *
- */
-
 namespace Multielement {
 
     public class MainWindow : Adw.ApplicationWindow {
@@ -41,7 +35,7 @@ namespace Multielement {
 //////          + "pink {background: pink;}; lightgrey {background: lightgrey;}; palegreen {background: green;}";
             css_provider = new Gtk.CssProvider();
 /////////   css_provider.load_from_string(dataCSS);
-            css_provider.load_from_resource("/ua/inf/multiapps/multiElement/items_widget.css");
+            css_provider.load_from_resource("/io/github/r_sergii/multiElement/items_widget.css");
             Gtk.StyleContext.add_provider_for_display(Gdk.Display.get_default(),css_provider,Gtk.STYLE_PROVIDER_PRIORITY_USER);
 
             list_box = new Gtk.ListBox ();
@@ -220,16 +214,12 @@ namespace Multielement {
 
         private void on_preferences_application () {
             message ("app.preferences action activated");
-
-            var settings = new Multielement.Settings ();
-            settings.set_transient_for (this);
-            settings.show ();
         }
 
      	private void about () {
             var win = new Adw.AboutWindow () {
                 application_name = "multiElement",
-                application_icon = "ua.inf.multiapps.multiElement",
+                application_icon = "io.github.r_sergii.multiElement",
                 //application_icon = "circle",
                 version = "0.1.0",
                 copyright = "Copyright © 2025 Serhii Rudchenko",

@@ -1,6 +1,5 @@
 namespace Multielement {
-//	[GtkTemplate (ui = "/io/github/r_sergii/multiClock/windows/language_window/language_window.ui")]
-	[GtkTemplate (ui = "/ua/inf/multiapps/multiElement/windows/language_window/language_window.ui")]
+	[GtkTemplate (ui = "/io/github/r_sergii/multiElement/windows/language_window/language_window.ui")]
 	public class LanguageWindow : Adw.PreferencesWindow {
         [GtkChild]
         unowned Gtk.Button button_ok;

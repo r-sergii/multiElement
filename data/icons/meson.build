@@ -1,4 +1,4 @@
-application_id = 'ua.inf.multiapps.multiElement'
+application_id = 'io.github.r_sergii.multiElement'
 circle_id = 'circle'
 piramid_id = 'piramid_source'
 short_id = 'short_periodic'

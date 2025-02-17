@@ -10,8 +10,7 @@ namespace Multielement {
 
         public SettingsService() {
             // GLib settings
-            //_settings = new GLib.Settings ("io.github.r_sergii.multiElement");
-            _settings = new GLib.Settings ("ua.inf.multiapps.multiElement");
+            _settings = new GLib.Settings ("io.github.r_sergii.multiElement");
             _model = new SettingsModel();
             _theme = new ThemeModel();
             _locale = new LocaleModel();

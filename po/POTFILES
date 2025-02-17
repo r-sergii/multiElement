@@ -1,4 +1,4 @@
-data/ua.inf.multiapps.multiElement.desktop.in
-data/ua.inf.multiapps.multiElement.appdata.xml.in
-data/ua.inf.multiapps.multiElement.gschema.xml
+data/io.github.r_sergii.multiElement.desktop.in
+data/io.github.r_sergii.multiElement.appdata.xml.in
+data/io.github.r_sergii.multiElement.gschema.xml
 src/main.vala

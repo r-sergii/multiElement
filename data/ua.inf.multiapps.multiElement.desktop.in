@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=multielement
-Exec=multielement
-Icon=ua.inf.multiapps.multiElement
-Terminal=false
-Type=Application
-Categories=GTK;
-StartupNotify=true

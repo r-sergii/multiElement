@@ -11,7 +11,7 @@ namespace Multielement {
         }
 
         construct{
-            var logo = new Gtk.Image.from_icon_name("ua.inf.multiapps.multiElement") {
+            var logo = new Gtk.Image.from_icon_name("io.github.r_sergii.multiElement") {
                 pixel_size = 128
             };
 

@@ -1,7 +1,6 @@
 multielement_sources = [
   'application.vala',
   'main.vala',
-  'windows/settings.vala',
   'windows/main_window/main_window.vala',
   'windows/language_window/language_window.vala',
   'windows/splash_window/splash_window.vala',
