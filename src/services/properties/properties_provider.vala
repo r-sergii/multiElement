@@ -10,7 +10,7 @@ namespace Multielement {
         }
 
         public void getItems ( Gee.ArrayList<PropertiesModel> listProperties, string locale ) {
-            var host = baseUrl + "EN";
+            var host = baseUrl + locale;
 //            var path = "/api/clock/";
 
             try {

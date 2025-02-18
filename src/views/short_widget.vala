@@ -380,7 +380,21 @@ namespace Multielement {
 	      grid.attach (new OHItem("R","","H","2"), 7, 14, 1, 1);
 	      grid.attach (new OHItem("R","","H",""), 8, 14, 1, 1);
 
+            var app = GLib.Application.get_default();
+            var propertiesService = (app as Multielement.Application).propertiesService;
+            message (propertiesService.listProperties[0].name);
+            message (propertiesService.listProperties[1].name);
+            message (propertiesService.listProperties[2].name);
+            message (propertiesService.listProperties[3].name);
+            message (propertiesService.listProperties[4].name);
+            message (propertiesService.listProperties[5].name);
+            message (propertiesService.listProperties[6].name);
+            message (propertiesService.listProperties[7].name);
+            message (propertiesService.listProperties[8].name);
+            message (propertiesService.listProperties[9].name);
+
 	      grid.attach (new PeriodItem("VI"), 0, 15, 2, 2);
+//	      grid.attach (new PeriodItem(propertiesService.listProperties[8].name), 2, 15, 5, 1);
 	      grid.attach (new PeriodItem("Lanthanides"), 2, 15, 5, 1);
 	      grid.attach (new ElementItem("57","La","138.90", multiElement.Resourse.cLantan, parent, ItemView.Large), 7, 15, 1, 1);///////////
 	      grid.attach (new ElementItem("58","Ce","140.12", multiElement.Resourse.cLantan, parent, ItemView.Large), 8, 15, 1, 1);///////////
@@ -399,6 +413,7 @@ namespace Multielement {
 	      grid.attach (new ElementItem("71","Lu","174.96", multiElement.Resourse.cLantan, parent, ItemView.Large), 11, 16, 1, 1);///////////
 
 	      grid.attach (new PeriodItem("VII"), 0, 17, 2, 2);
+//	      grid.attach (new PeriodItem(propertiesService.listProperties[9].name), 2, 17, 5, 1);
 	      grid.attach (new PeriodItem("Actinides"), 2, 17, 5, 1);
 	      grid.attach (new ElementItem("89","Ac","[227]", multiElement.Resourse.cActan, parent, ItemView.Large), 7, 17, 1, 1);///////////
 	      grid.attach (new ElementItem("90","Th","223.04", multiElement.Resourse.cActan, parent, ItemView.Large), 8, 17, 1, 1);///////////
@@ -416,11 +431,17 @@ namespace Multielement {
 	      grid.attach (new ElementItem("102","No","259.1", multiElement.Resourse.cActan, parent, ItemView.Large), 10, 18, 1, 1);///////////
 	      grid.attach (new ElementItem("103","Lr","[266]", multiElement.Resourse.cActan, parent, ItemView.Large), 11, 18, 1, 1);///////////
 	      grid.attach (new TitleItem("Properties"), 0, 19, 12, 1);
+/*
+	      grid.attach (new PropertiesItem(TextOperation.TextTrim(propertiesService.listProperties[0].name,15), multiElement.Resourse.cGalogen), 0, 20, 3, 1);
+	      grid.attach (new PropertiesItem(TextOperation.TextTrim(propertiesService.listProperties[1].name,15), multiElement.Resourse.cReal), 3, 20, 3, 1);
+	      grid.attach (new PropertiesItem(TextOperation.TextTrim(propertiesService.listProperties[2].name,15), multiElement.Resourse.cNemetal), 6, 20, 3, 1);
+	      grid.attach (new PropertiesItem(TextOperation.TextTrim(propertiesService.listProperties[3].name,15), multiElement.Resourse.cSheloch), 9, 20, 3, 1);
 
-            var app = GLib.Application.get_default();
-            var propertiesService = (app as Multielement.Application).propertiesService;
-            message (propertiesService.listProperties[0].name);
-
+	      grid.attach (new PropertiesItem(TextOperation.TextTrim(propertiesService.listProperties[4].name,15), multiElement.Resourse.cShelLand), 0, 21, 3, 1);
+	      grid.attach (new PropertiesItem(TextOperation.TextTrim(propertiesService.listProperties[5].name,15), multiElement.Resourse.cMetal), 3, 21, 3, 1);
+	      grid.attach (new PropertiesItem(TextOperation.TextTrim(propertiesService.listProperties[6].name,15), multiElement.Resourse.cPostmetal), 6, 21, 3, 1);
+	      grid.attach (new PropertiesItem(TextOperation.TextTrim(propertiesService.listProperties[7].name,15), multiElement.Resourse.cPolimetal), 9, 21, 3, 1);
+*/
 	      grid.attach (new PropertiesItem(TextOperation.TextTrim("Halogens",15), multiElement.Resourse.cGalogen), 0, 20, 3, 1);
 	      grid.attach (new PropertiesItem(TextOperation.TextTrim("Noble gases",15), multiElement.Resourse.cReal), 3, 20, 3, 1);
 	      grid.attach (new PropertiesItem(TextOperation.TextTrim("Non metal",15), multiElement.Resourse.cNemetal), 6, 20, 3, 1);

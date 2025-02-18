@@ -159,22 +159,22 @@ namespace Multielement {
                     case "Piramid":
                         _currentLocale.piramid = listTranslator[i].translation;
                         break;
-                    case "Adomah Vertical":
+                    case "vertical view":
                         _currentLocale.adomah_vertical = listTranslator[i].translation;
                         break;
-                    case "Adomah Horizontal":
+                    case "horizontal view":
                         _currentLocale.adomah_horizontal = listTranslator[i].translation;
                         break;
-                    case "short table":
+                    case "short periodic table":
                         _currentLocale.short_table = listTranslator[i].translation;
                         break;
-                    case "extended table":
+                    case "extended periodic table":
                         _currentLocale.extended_table = listTranslator[i].translation;
                         break;
-                    case "circle table":
+                    case "circle periodic table":
                         _currentLocale.circle_table = listTranslator[i].translation;
                         break;
-                    case "piramid table":
+                    case "piramid periodic table":
                         _currentLocale.piramid_table = listTranslator[i].translation;
                         break;
                     case "adomah table":

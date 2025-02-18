@@ -55,10 +55,12 @@ namespace Multielement {
                     return;
                 }
 
+                var locale = this.settingsService.locale;
+
                 var splash = new Multielement.SplashWindow (this);
                 splash.present ();
                 _elementService.getItems ();
-                _propertiesService.getItems ();
+                _propertiesService.getItems (locale.locale);
                 Timeout.add (3000, make_window);
 
 //                win = this.create_window ();
@@ -126,7 +128,7 @@ namespace Multielement {
                 application_icon = "ua.inf.multiapps.multiElement",
                 version = "0.1.0",
                 copyright = "Copyright © 2025 Serhii Rudchenko",
-//                license_type = License.GPL_3_0,
+//                license_type = License.Apache_2_0,
                 developer_name = "Serhii Rudchenko",
                 developers = {"Serhii Rudchenko email:sergej.rudchenko@gmail.com"},
                 translator_credits = _("translator-credits"),

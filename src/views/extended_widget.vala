@@ -413,16 +413,16 @@ namespace Multielement {
 			grid.attach (new ElementItem("103","Lr","[266]", multiElement.Resourse.cActan, parent), 18, 12, 1, 1);///////////
 
 //			grid.attach (new TitleItem(TextOperation.TextTrim("Properties",7)), 0, 13, 1, 1);
-			grid.attach (new PropertiesItem(TextOperation.TextTrim("Properties",7), multiElement.Resourse.cUnknown), 0, 13, 2, 1);
-			grid.attach (new PropertiesItem(TextOperation.TextTrim("Halogens",11), multiElement.Resourse.cGalogen), 1, 13, 2, 1);
-			grid.attach (new PropertiesItem(TextOperation.TextTrim("Noble gases",11), multiElement.Resourse.cReal), 3, 13, 2, 1);
-			grid.attach (new PropertiesItem(TextOperation.TextTrim("Non metal",11), multiElement.Resourse.cNemetal), 5, 13, 2, 1);
-			grid.attach (new PropertiesItem(TextOperation.TextTrim("Alkali metals",11), multiElement.Resourse.cSheloch), 7, 13, 2, 1);
-			grid.attach (new PropertiesItem(TextOperation.TextTrim("Alkaline earth metals",11), multiElement.Resourse.cShelLand), 9, 13, 2, 1);
-			grid.attach (new PropertiesItem(TextOperation.TextTrim("Transition metals",11), multiElement.Resourse.cMetal), 11, 13, 2, 1);
-			grid.attach (new PropertiesItem(TextOperation.TextTrim("Post-transition metals",11), multiElement.Resourse.cPostmetal), 13, 13, 2, 1);
-			grid.attach (new PropertiesItem(TextOperation.TextTrim("Semimetals",11), multiElement.Resourse.cPolimetal), 15, 13, 2, 1);
-			grid.attach (new PropertiesItem(TextOperation.TextTrim("Properties unknown",11), multiElement.Resourse.cUnknown), 17, 13, 2, 1);
+			grid.attach (new PropertiesItem(TextOperation.TextTrim("Properties",7), multiElement.Resourse.cUnknown), 1, 13, 19, 1);
+			grid.attach (new PropertiesItem(TextOperation.TextTrim("Halogens",11), multiElement.Resourse.cGalogen), 1, 14, 2, 1);
+			grid.attach (new PropertiesItem(TextOperation.TextTrim("Noble gases",11), multiElement.Resourse.cReal), 3, 14, 2, 1);
+			grid.attach (new PropertiesItem(TextOperation.TextTrim("Non metal",11), multiElement.Resourse.cNemetal), 5, 14, 2, 1);
+			grid.attach (new PropertiesItem(TextOperation.TextTrim("Alkali metals",11), multiElement.Resourse.cSheloch), 7, 14, 2, 1);
+			grid.attach (new PropertiesItem(TextOperation.TextTrim("Alkaline earth metals",11), multiElement.Resourse.cShelLand), 9, 14, 2, 1);
+			grid.attach (new PropertiesItem(TextOperation.TextTrim("Transition metals",11), multiElement.Resourse.cMetal), 11, 14, 2, 1);
+			grid.attach (new PropertiesItem(TextOperation.TextTrim("Post-transition metals",11), multiElement.Resourse.cPostmetal), 13, 14, 2, 1);
+			grid.attach (new PropertiesItem(TextOperation.TextTrim("Semimetals",11), multiElement.Resourse.cPolimetal), 15, 14, 2, 1);
+			grid.attach (new PropertiesItem(TextOperation.TextTrim("Properties unknown",11), multiElement.Resourse.cUnknown), 17, 14, 2, 1);
 
             var centerBox = new CenterBox ();
             centerBox.set_center_widget (grid);

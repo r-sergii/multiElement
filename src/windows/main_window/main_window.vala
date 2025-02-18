@@ -15,6 +15,7 @@ namespace Multielement {
 //        private Adw.Window window_adw;
         private Adw.ToastOverlay overlay;
         private Adw.NavigationSplitView split_view;
+        private Gtk.MenuButton menu_button;
 
 		public MainWindow (Adw.Application application) {
 			Object (application: application, title: "multiElement",
@@ -51,7 +52,14 @@ namespace Multielement {
             menu.append_item (item_quit);
 
 //            var pop = (Gtk.PopoverMenu) this.menu_button.get_popover ();
-            var pop = new Gtk.PopoverMenu.from_model(menu);
+////            var popover = new Gtk.PopoverMenu.from_model(menu);
+////            popover.add_child (this.theme_switcher, "theme");
+////            menu_button.set_popover(popover);
+//            pop.set_menu_model (menu);
+  //          this.theme_switcher = new MyLib.ThemeSwitcher ();
+    //        pop.add_child (this.theme_switcher, "theme");
+
+            var pop = (Gtk.PopoverMenu) this.menu_button.get_popover ();
             pop.set_menu_model (menu);
 
             this.theme_switcher = new MyLib.ThemeSwitcher ();
@@ -75,9 +83,9 @@ namespace Multielement {
             (list_box.get_row_at_index (3) as Adw.ActionRow).title = locale.piramid;
             (list_box.get_row_at_index (3) as Adw.ActionRow).subtitle = locale.piramid_table;
             (list_box.get_row_at_index (4) as Adw.ActionRow).title = "Adomah";
-            (list_box.get_row_at_index (4) as Adw.ActionRow).subtitle = locale.adomah_table;
+            (list_box.get_row_at_index (4) as Adw.ActionRow).subtitle = locale.adomah_vertical;
             (list_box.get_row_at_index (5) as Adw.ActionRow).title = "Adomah";
-            (list_box.get_row_at_index (5) as Adw.ActionRow).subtitle = locale.adomah_table;
+            (list_box.get_row_at_index (5) as Adw.ActionRow).subtitle = locale.adomah_horizontal;
         }
 
  	    construct{
@@ -158,21 +166,22 @@ namespace Multielement {
 
             var adomahRow = new Adw.ActionRow () {
                 title = "Adomah",
-                subtitle = locale.adomah_table, // "adomah table",
+                subtitle = locale.adomah_vertical, // "adomah table",
                 icon_name = "adomah_vert"
             };
             list_box.append (adomahRow);
 
             var adomahHorizRow = new Adw.ActionRow () {
                 title = "Adomah",
-                subtitle = locale.adomah_table, // "adomah table",
+                subtitle = locale.adomah_horizontal, // "adomah table",
                 icon_name = "adomah_horiz"
             };
             list_box.append (adomahHorizRow);
 
             scroll.set_child(list_box);
 
- 	        var menu_button = new Gtk.MenuButton();
+ 	        //var
+ 	        this.menu_button = new Gtk.MenuButton();
             menu_button.set_icon_name ("open-menu-symbolic");
             menu_button.vexpand = false;
 
@@ -277,7 +286,7 @@ namespace Multielement {
                 //application_icon = "circle",
                 version = "0.1.0",
                 copyright = "Copyright © 2025 Serhii Rudchenko",
-//                license_type = License.GPL_3_0,
+//                license_type = License.Apache_2_0,
                 developer_name = "Serhii Rudchenko",
                 developers = {"Serhii Rudchenko email:sergej.rudchenko@gmail.com"},
                 translator_credits = _("translator-credits"),

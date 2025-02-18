@@ -128,7 +128,9 @@ namespace Multielement {
 
         public PropertiesItem (string _Text, string gColor)
         {
-	      Text = _Text;
+//          Text = TextOperation.TextTrim(_Text, 15);
+
+          Text = _Text;
 	      //Frame frm = new Gtk.Frame("");
 	      Label lName = new Gtk.Label (Text);      //16000//12000
 

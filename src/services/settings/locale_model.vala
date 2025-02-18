@@ -133,12 +133,12 @@ namespace Multielement {
             extended = "Extended";
             circle = "Circle";
             piramid = "Piramid";
-            adomah_vertical = "Adomah%20Vertical";
-            adomah_horizontal = "Adomah%20Horizontal";
-            short_table = "short%20table";
-            extended_table = "extended%20table";
-            circle_table = "circle%20table";
-            piramid_table = "piramid%20table";
+            adomah_vertical = "vertical%20view";
+            adomah_horizontal = "horizontal%20view";
+            short_table = "short%20periodic%20table";
+            extended_table = "extended%20periodic%20table";
+            circle_table = "circle%20periodic%20table";
+            piramid_table = "piramid%20periodic%20table";
             adomah_table = "adomah%20table";
         }
 
@@ -178,12 +178,12 @@ namespace Multielement {
             extended = "Extended";
             circle = "Circle";
             piramid = "Piramid";
-            adomah_vertical = "Adomah Vertical";
-            adomah_horizontal = "Adomah Horizontal";
-            short_table = "short table";
-            extended_table = "extended table";
-            circle_table = "circle table";
-            piramid_table = "piramid table";
+            adomah_vertical = "vertical view";
+            adomah_horizontal = "horizontal view";
+            short_table = "short periodic table";
+            extended_table = "extended periodic table";
+            circle_table = "circle periodic table";
+            piramid_table = "piramid periodic table";
             adomah_table = "adomah table";
         }
 

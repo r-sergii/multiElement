@@ -14,7 +14,7 @@ namespace Multielement {
             var host = baseUrl + pathUrl + "?lang=" + source.lang + "&words=" + source.words;
 
             listTranslation.clear();
-//            message (host);
+            message (host);
 
             try {
                 var response = http.get( host );

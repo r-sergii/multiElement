@@ -57,22 +57,22 @@
 	    <default>"Piramid"</default>
 	  </key>
 	  <key name="adomah-vertical" type="s">
-	    <default>"Adomah Vertical"</default>
+	    <default>"vertical view"</default>
 	  </key>
 	  <key name="adomah-horizontal" type="s">
-	    <default>"Adomah Horizontal"</default>
+	    <default>"horizontal view"</default>
 	  </key>
 	  <key name= "short-table" type="s">
-	    <default> "short table"</default>
+	    <default>"short periodic table"</default>
 	  </key>
 	  <key name="extended-table" type="s">
-	    <default>"extended table"</default>
+	    <default>"extended periodic table"</default>
 	  </key>
 	  <key name="circle-table" type="s">
-	    <default>"circle table"</default>
+	    <default>"circle periodic table"</default>
 	  </key>
 	  <key name="piramid-table" type="s">
-	    <default>"piramid table"</default>
+	    <default>"piramid periodic table"</default>
 	  </key>
 	  <key name="adomah-table" type="s">
 	    <default>"adomah table"</default>
