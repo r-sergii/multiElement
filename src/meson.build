@@ -32,10 +32,15 @@ multielement_sources = [
   'services/connect/connect_service.vala',
   'services/connect/connect_provider.vala',
   'services/connect/connect_model.vala',
+  'services/appsload/appsload_service.vala',
+  'services/appsload/appsload_provider.vala',
+  'services/appsload/appsload_model.vala',
   'utils/text_trim.vala',
   'utils/color_operation.vala',
   'resources/define_color.vala',
   'utils/http.vala',
+  'utils/info_linux.vala',
+  'utils/info_linux.c',
 ]
 
 multielement_deps = [

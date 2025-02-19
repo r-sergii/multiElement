@@ -14,5 +14,6 @@ Instant, complete encyclopedic information about each chemical element is availa
 ![screenshot2.png](/data/screenshots/screenshot2.png)
 ![screenshot3.png](/data/screenshots/screenshot3.png)
 ![screenshot4.png](/data/screenshots/screenshot4.png)
-![screenshot3.png](/data/screenshots/screenshot5.png)
-![screenshot4.png](/data/screenshots/screenshot6.png)
+![screenshot5.png](/data/screenshots/screenshot5.png)
+![screenshot6.png](/data/screenshots/screenshot6.png)
+![screenshot7.png](/data/screenshots/screenshot7.png)

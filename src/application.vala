@@ -4,8 +4,9 @@ namespace Multielement {
         public Adw.ColorScheme theme { get; set; }
         private Multielement.ElementService _elementService;
         private Multielement.PropertiesService _propertiesService;
-
         private Multielement.SettingsService _settingsService;
+
+        private MyLib.InfoLinux info;
 
         public Application () {
             Object (application_id: "io.github.r_sergii.multiElement", flags: ApplicationFlags.FLAGS_NONE);
@@ -28,6 +29,9 @@ namespace Multielement {
             var set_theme_action = new GLib.PropertyAction ("set_app_theme", this, "theme");
             set_theme_action.notify.connect (this.set_app_theme);
             this.add_action (set_theme_action);
+
+            info = new MyLib.InfoLinux ();
+            stdout.printf ("%s\n", info.os + "-" + info.cpu);
 
             _settingsService = new SettingsService ();
             _elementService = new ElementService ();
@@ -56,6 +60,9 @@ namespace Multielement {
                 }
 
                 var locale = this.settingsService.locale;
+
+                var appsLoad = new Multielement.AppsLoadService (info, _settingsService.locale.locale );
+                appsLoad.insert ();
 
                 var splash = new Multielement.SplashWindow (this);
                 splash.present ();
