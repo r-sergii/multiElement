@@ -90,7 +90,7 @@ namespace Multielement {
 			        //this
               vBox.append (lWeight);
           }
-//	      ConnectCall(Nomer, frm, parent);
+	      ConnectCall(Nomer, this, parent);
 	      this.set_label ((string)null);
           this.set_child (vBox);
 
@@ -98,6 +98,12 @@ namespace Multielement {
           this.add_css_class(gColor);
 
 //	      return frm;
+      }
+
+      public void ConnectCall(string sNomer, Button eb, MainWindow parent)
+      {
+            int nomer = int.parse (sNomer);
+            eb.clicked.connect(() => { parent.Call001(nomer); });
       }
     }
 
@@ -300,7 +306,7 @@ namespace Multielement {
 
       public void ConnectCall(string sNomer, Button eb, MainWindow parent)
       {
-            eb.clicked.connect(() => { parent.Call001(); });
+            eb.clicked.connect(() => { parent.Call001(int.parse(sNomer)); });
 /*	      switch(sNomer)
 	      {
 	          case "1":

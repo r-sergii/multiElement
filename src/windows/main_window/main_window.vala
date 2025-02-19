@@ -429,15 +429,27 @@ namespace Multielement {
             return css_provider;
         }
 
-        public bool Call001()
+        public bool Call001(int nomer)
         {
-            message("Click");
+            var app = GLib.Application.get_default();
+            var elementService = (app as Multielement.Application).elementService;
+            message(elementService.listElements[nomer].wiki);
+
+            message("Click " + nomer.to_string ());
 //	        MessageBox msg = new MessageBox(this, "001", "Внимание");
 //	  FormWeb formWeb = new FormWeb(1);
 //	  formWeb.show();
 //	  call_html("gnome-open http://google.com/","");
 
 //call_html("x-www-browser http://google.com/","");
+            var browser = new BrowserWindow(elementService.listElements[nomer - 1].wiki,
+                elementService.listElements[nomer - 1].symbol + " : "
+                + elementService.listElements[nomer - 1].latin_name);
+            browser.show();
+
+            var progress = new Multielement.ProgressWidget (app as Multielement.Application);
+            progress.present ();
+
 	        return true;
         }
 
@@ -488,8 +500,31 @@ namespace Multielement {
                 });
             }
         }
-
 /////???
-
+//
     }
+/*
+    public class Browser : Adw.Window {
+        //private const string URL = "http://google.com/";
+
+        public Browser(string url) {
+            Object (title: "Wikipedia",
+			default_width: 640, default_height: 480);
+//            this.add(this.create_web_window());
+            this.set_content(create_web_window(url));
+//            this.destroy.connect(Gtk.main_quit);
+        }
+
+        private Gtk.ScrolledWindow create_web_window(string url) {
+            var view = new WebKit.WebView();
+            view.load_uri(url);//Browser.URL);
+
+            var scrolled_window = new Gtk.ScrolledWindow();
+            scrolled_window.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC);
+            scrolled_window.set_child(view);
+
+            return scrolled_window;
+        }
+    }
+    */
 }

@@ -5,6 +5,7 @@ multielement_sources = [
   'windows/language_window/language_window.vala',
   'windows/splash_window/splash_window.vala',
   'windows/no_connect_window/no_connect_window.vala',
+  'windows/browser_window/browser_window.vala',
   'views/short_widget.vala',
   'views/extended_widget.vala',
   'views/circle_widget.vala',
@@ -14,6 +15,7 @@ multielement_sources = [
   'widgets/items_widget/items_widget.vala',
   'widgets/theme_switcher/theme_switcher.vala',
   'widgets/circular-progress-bar/circular-progress-bar.vala',
+  'widgets/progress_widget/progress_widget.vala',
   'services/element/element_service.vala',
   'services/element/element_provider.vala',
   'services/element/element_model.vala',
@@ -41,7 +43,8 @@ multielement_deps = [
   dependency('cairo'),
   dependency('gio-2.0'),
   dependency('gee-0.8'),
-  dependency('json-glib-1.0')
+  dependency('json-glib-1.0'),
+  dependency('webkitgtk-6.0')
 ]
 
 gnome = import('gnome')

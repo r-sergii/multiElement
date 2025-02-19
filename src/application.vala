@@ -59,7 +59,7 @@ namespace Multielement {
 
                 var splash = new Multielement.SplashWindow (this);
                 splash.present ();
-                _elementService.getItems ();
+                _elementService.getItems (locale.locale);
                 _propertiesService.getItems (locale.locale);
                 Timeout.add (3000, make_window);
 

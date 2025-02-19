@@ -7,9 +7,9 @@ namespace Multielement {
             listElements = new Gee.ArrayList<ElementModel> ();
         }
 
-        public void getItems () {
+        public void getItems (string locale) {
             var elementProvider = new ElementProvider ();
-            elementProvider.getItems ( listElements, "EN" );
+            elementProvider.getItems ( listElements, locale );
             message (listElements.size.to_string ());
         }
     }
