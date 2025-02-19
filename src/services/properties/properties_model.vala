@@ -26,17 +26,17 @@ namespace Multielement {
                     case PropertiesField.id:
                         unowned Json.Node it = obj.get_member (name2);
                         id = obj.get_int_member (PropertiesField.id);
-                        message(id.to_string());
+//                        message(id.to_string());
                         break;
                     case PropertiesField.properties:
                         unowned Json.Node it = obj.get_member (name2);
                         properties = obj.get_int_member (PropertiesField.properties);
-                        message(properties.to_string());
+//                        message(properties.to_string());
                         break;
                     case PropertiesField.name:
                         unowned Json.Node it = obj.get_member (name2);
                         name = obj.get_string_member (PropertiesField.name);
-                        message (name);
+//                        message (name);
                         break;
                     default:
                         break;

@@ -40,7 +40,7 @@ namespace Multielement {
                 + ";" + temp.piramid_table + ";" + temp.adomah_table;
 
 //            message (translateModel.lang);
-            message (translateModel.words);
+//            message (translateModel.words);
             var translateProvider = new TranslatorProvider ();
             translateProvider.getItems ( translateModel, listTranslator );
             //_currentLocale.locale = translateModel.lang;
@@ -57,7 +57,7 @@ namespace Multielement {
 //            message (_currentLocale.locale);
 
             for(int i = 0;i<listTranslator.size;i++) {
-                message(listTranslator[i].translation);
+//                message(listTranslator[i].translation);
                 switch (listTranslator[i].original)
                 {
                     case "Loading...":

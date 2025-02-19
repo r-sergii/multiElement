@@ -31,7 +31,7 @@ namespace Multielement {
             this.add_action (set_theme_action);
 
             info = new MyLib.InfoLinux ();
-            stdout.printf ("%s\n", info.os + "-" + info.cpu);
+//            stdout.printf ("%s\n", info.os + "-" + info.cpu);
 
             _settingsService = new SettingsService ();
             _elementService = new ElementService ();
@@ -113,13 +113,6 @@ namespace Multielement {
             provider.load_from_resource ("/ua/inf/multiapps/multiElement/theme_switcher.css");
             Gtk.StyleContext.add_provider_for_display (Gdk.Display.get_default (), provider, Gtk.STYLE_PROVIDER_PRIORITY_USER);
 
-            // GLib settings
-//            var settings = new GLib.Settings ("org.hitchhiker_linux.vapad");
-  //          settings.bind ("vimode", win, "vimode", GLib.SettingsBindFlags.DEFAULT);
-    //        settings.bind ("grid", win, "display_grid", GLib.SettingsBindFlags.DEFAULT);
-      //      settings.bind ("syntax", win, "editor_theme", GLib.SettingsBindFlags.DEFAULT);
-        //    settings.bind ("font", win, "editor_font", GLib.SettingsBindFlags.DEFAULT);
-          //  settings.bind ("theme", this, "theme", GLib.SettingsBindFlags.DEFAULT);
             return win;
         }
 
@@ -147,7 +140,7 @@ namespace Multielement {
         }
 
         private void on_preferences_action () {
-            message ("app.preferences action activated");
+//            message ("app.preferences action activated");
         }
 
         private void init_app_theme () {
@@ -215,7 +208,7 @@ namespace Multielement {
         }
 */
         private void on_language_action () {
-            message ("language action show activated");
+//            message ("language action show activated");
 
             var language = new Multielement.LanguageWindow (this.active_window as Multielement.MainWindow);
             language.set_transient_for (this.active_window);

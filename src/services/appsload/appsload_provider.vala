@@ -12,13 +12,13 @@ namespace Multielement {
         public void insertItem ( AppsLoadModel model ) {
             var host = baseUrl;
 
-            message (model.application);
-            message (model.platform);
-            message (model.email);
-            message (model.uid);
-            message (model.device);
-            message (model.locale);
-            message (model.datetime.to_string ());
+//            message (model.application);
+//            message (model.platform);
+//            message (model.email);
+//            message (model.uid);
+//            message (model.device);
+//            message (model.locale);
+//            message (model.datetime.to_string ());
 
             //Gee.HashMap<string,string>
             var data = new Gee.HashMap<string,string>();

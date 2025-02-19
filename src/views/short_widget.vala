@@ -382,16 +382,16 @@ namespace Multielement {
 
             var app = GLib.Application.get_default();
             var propertiesService = (app as Multielement.Application).propertiesService;
-            message (propertiesService.listProperties[0].name);
-            message (propertiesService.listProperties[1].name);
-            message (propertiesService.listProperties[2].name);
-            message (propertiesService.listProperties[3].name);
-            message (propertiesService.listProperties[4].name);
-            message (propertiesService.listProperties[5].name);
-            message (propertiesService.listProperties[6].name);
-            message (propertiesService.listProperties[7].name);
-            message (propertiesService.listProperties[8].name);
-            message (propertiesService.listProperties[9].name);
+//            message (propertiesService.listProperties[0].name);
+  //          message (propertiesService.listProperties[1].name);
+    //        message (propertiesService.listProperties[2].name);
+      //      message (propertiesService.listProperties[3].name);
+        //    message (propertiesService.listProperties[4].name);
+//            message (propertiesService.listProperties[5].name);
+  //          message (propertiesService.listProperties[6].name);
+    //        message (propertiesService.listProperties[7].name);
+      //      message (propertiesService.listProperties[8].name);
+        //    message (propertiesService.listProperties[9].name);
 
 	      grid.attach (new PeriodItem("VI"), 0, 15, 2, 2);
 //	      grid.attach (new PeriodItem(propertiesService.listProperties[8].name), 2, 15, 5, 1);

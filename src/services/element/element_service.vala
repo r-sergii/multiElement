@@ -10,7 +10,7 @@ namespace Multielement {
         public void getItems (string locale) {
             var elementProvider = new ElementProvider ();
             elementProvider.getItems ( listElements, locale );
-            message (listElements.size.to_string ());
+//            message (listElements.size.to_string ());
         }
     }
 }

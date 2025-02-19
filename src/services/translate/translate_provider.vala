@@ -14,13 +14,13 @@ namespace Multielement {
             var host = baseUrl + pathUrl + "?lang=" + source.lang + "&words=" + source.words;
 
             listTranslation.clear();
-            message (host);
+//            message (host);
 
             try {
                 var response = http.get( host );
                 if ( response.status.code == 200 ){
                     //stdout.printf(@"My public IP address is: $(response)\n");
-                    message (response.to_string ());
+//                    message (response.to_string ());
 
                     var parser = new Json.Parser ();
                     parser.load_from_data ((string)response.to_string (), -1);

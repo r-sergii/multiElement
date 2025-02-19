@@ -30,7 +30,7 @@ namespace Multielement {
                         listElements.add (new ElementModel.fromJson (item) );
 
                         i++;
-                        message(i.to_string());
+//                        message(i.to_string());
                     }
                 }
             } catch (Error err){
