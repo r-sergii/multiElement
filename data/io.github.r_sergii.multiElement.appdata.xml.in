@@ -26,24 +26,31 @@
 
   <screenshots>
     <screenshot type="default">
+      <caption>short periodic table</caption>
       <image>http://multiapps.inf.ua/screenshots/melementlite/flathub/screenshot1.png</image>
     </screenshot>
     <screenshot type="default">
+      <caption>extended periodic table</caption>
       <image>http://multiapps.inf.ua/screenshots/melementlite/flathub/screenshot2.png</image>
     </screenshot>
     <screenshot type="default">
+      <caption>circle periodic table</caption>
       <image>http://multiapps.inf.ua/screenshots/melementlite/flathub/screenshot3.png</image>
     </screenshot>
     <screenshot type="default">
+      <caption>piramid periodic table</caption>
       <image>http://multiapps.inf.ua/screenshots/melementlite/flathub/screenshot4.png</image>
     </screenshot>
     <screenshot type="default">
+      <caption>vertical view ADOMAH periodic table</caption>
       <image>http://multiapps.inf.ua/screenshots/melementlite/flathub/screenshot5.png</image>
     </screenshot>
     <screenshot type="default">
+      <caption>horizontal view ADOMAH periodic table</caption>
       <image>http://multiapps.inf.ua/screenshots/melementlite/flathub/screenshot6.png</image>
     </screenshot>
     <screenshot type="default">
+      <caption>complete encyclopedic information about each chemical element</caption>
       <image>http://multiapps.inf.ua/screenshots/melementlite/flathub/screenshot7.png</image>
     </screenshot>
   </screenshots>

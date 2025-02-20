@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=multielement
+Name=multiElement
 Comment=Alternative versions of the periodic table of chemical elements
 Exec=multielement
 Icon=io.github.r_sergii.multiElement
@@ -8,4 +8,4 @@ Type=Application
 Categories=Utility;GNOME;GTK;
 StartupNotify=true
 Keywords=Chemistry;Science;Periodic Table;Chemical elements;
-X-Purism-FormFactor=Workstation;Mobile;
+X-Purism-FormFactor=Workstation;
