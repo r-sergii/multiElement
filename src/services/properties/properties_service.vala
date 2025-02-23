@@ -9,6 +9,7 @@ namespace Multielement {
 
         public void getItems (string locale) {
             var propertiesProvider = new PropertiesProvider ();
+            listProperties.clear ();
             propertiesProvider.getItems ( listProperties, locale );
 //            message (listProperties.size.to_string ());
         }

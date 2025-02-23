@@ -28,6 +28,17 @@ namespace MyLib
         public uint16 blue;
     }
 
+    public struct CSSColor {
+        public string light;
+        public string dark;
+
+//        public CSSColor(string l, string d)
+  //      {
+    //        light = l;
+      //      dark = d;
+        //}
+    }
+
     class GdkColor {
         private double red;
         private double green;

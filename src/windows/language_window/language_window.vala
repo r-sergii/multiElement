@@ -72,6 +72,9 @@ namespace Multielement {
             var app = GLib.Application.get_default();
             var settingsService = (app as Multielement.Application).settingsService;
 
+            var progress = new Multielement.ProgressWidget (app as Multielement.Application);
+            progress.present ();
+
             //this.close ();
             Multielement.TranslatorService translateService = new TranslatorService ();
 //            message (arrLang.index(comboLang.get_active()));
@@ -83,6 +86,9 @@ namespace Multielement {
 //                settingsService.locale.locale = arrLang.index(comboLang.get_active());
                 translateService.fillModel( settingsService.locale, arrLang.index(comboLang.get_active()) );
             }
+
+            (app as Multielement.Application).elementService.getItems (arrLang.index(comboLang.get_active()));
+            (app as Multielement.Application).propertiesService.getItems (arrLang.index(comboLang.get_active()));
 
             //settingsService.locale.toSettings (settingsService.settings);
             settingsService.writeLocale ();

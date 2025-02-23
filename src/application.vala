@@ -72,7 +72,7 @@ namespace Multielement {
 
 //                win = this.create_window ();
 //                win.present ();
-                this.set_app_theme ();
+////////////                this.set_app_theme ();
 
 //                win = new Multielement.Window (this);
             }
@@ -113,16 +113,18 @@ namespace Multielement {
             provider.load_from_resource ("/ua/inf/multiapps/multiElement/theme_switcher.css");
             Gtk.StyleContext.add_provider_for_display (Gdk.Display.get_default (), provider, Gtk.STYLE_PROVIDER_PRIORITY_USER);
 
+            this.set_app_theme ();
+
             return win;
         }
 
         private void on_about_action () {
+//            (this.active_window as Multielement.MainWindow).shortWidget.changeTheme();
 //            string[] authors = { "Serhii Rudchenko" };
   //          Gtk.show_about_dialog (this.active_window,
     //                               "program-name", "multiElement",
       //                             "authors", authors,
         //                           "version", "0.1.0");
-
             var win = new Adw.AboutWindow () {
                 application_name = "multiElement",
                 application_icon = "ua.inf.multiapps.multiElement",
@@ -137,6 +139,7 @@ namespace Multielement {
             };
             win.set_transient_for (this.active_window);
             win.show ();
+
         }
 
         private void on_preferences_action () {
@@ -194,8 +197,18 @@ namespace Multielement {
                     th.theme = 0;
                     break;
             }
-//            th.toSettings ();
+
             settingsService.writeTheme ();
+            var win = this.active_window as Multielement.MainWindow;
+            //message ("Start");
+            if((win != null) && (win.isCreate != false)) {
+                win.shortWidget.changeTheme ();
+                win.extendedWidget.changeTheme ();
+                win.adomahHorizWidget.changeTheme ();
+                win.adomahVertWidget.changeTheme ();
+//            (this.active_window as Multielement.MainWindow).shortWidget.changeTheme();
+            }
+            //message ("Short");
 
         }
 /*

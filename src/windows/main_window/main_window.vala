@@ -6,8 +6,10 @@ namespace Multielement {
 
     	private Gtk.ListBox list_box;
     	private Gtk.Notebook nb;
-    	private ShortWidget shortWidget;
-        private ExtendedWidget extendedWidget;
+    	public ShortWidget shortWidget;
+        public ExtendedWidget extendedWidget;
+        public AdomahVertWidget adomahVertWidget;
+        public AdomahHorizWidget adomahHorizWidget;
         private int selectedPage;
 
     	private MyLib.ThemeSwitcher theme_switcher;
@@ -16,6 +18,16 @@ namespace Multielement {
         private Adw.ToastOverlay overlay;
         private Adw.NavigationSplitView split_view;
         private Gtk.MenuButton menu_button;
+
+        private bool _isCreate;
+        public bool isCreate {
+            get {
+                return _isCreate;
+            }
+            set {
+                _isCreate = value;
+            }
+        }
 
 		public MainWindow (Adw.Application application) {
 			Object (application: application, title: "multiElement",
@@ -28,6 +40,7 @@ namespace Multielement {
  	    }
 
         public void init_menu () {
+            _isCreate = false;
             var app = GLib.Application.get_default();
             var locale = (app as Multielement.Application).settingsService.locale;
 
@@ -131,10 +144,13 @@ namespace Multielement {
 	        nb.append_page(circleWidget.CircleWidget (this), null);
 	        var piramidWidget = new PiramidWidget();
 	        nb.append_page(piramidWidget.PiramidWidget (this), null);
-	        var adomahVertWidget = new AdomahVertWidget();
+	        //var
+	        adomahVertWidget = new AdomahVertWidget();
 	        nb.append_page(adomahVertWidget.AdomahVertWidget (this), null);
-	        var adomahHorizWidget = new AdomahHorizWidget();
+	        //var
+	        adomahHorizWidget = new AdomahHorizWidget();
 	        nb.append_page(adomahHorizWidget.AdomahHorizWidget (this), null);
+//	        nb.append_page( adomahHorizWidget, null);
 
             var shortRow = new Adw.ActionRow () {
                 title = locale.short_name, //"Short",
@@ -273,6 +289,7 @@ namespace Multielement {
             add_breakpoint(breakpoint);
 
             close_request.connect(on_close_application);
+            isCreate = true;
      	}
 
         private void on_preferences_application () {

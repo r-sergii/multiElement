@@ -11,7 +11,7 @@ Instant, complete encyclopedic information about each chemical element is availa
  - A customizable online multilingual translation of the application interface
 
 ![screenshot1.png](/data/screenshots/screenshot1.png)
-![screenshot2.png](/data/screenshots/screenshot2.png)
+![screenshot21.png](/data/screenshots/screenshot21.png)
 ![screenshot3.png](/data/screenshots/screenshot3.png)
 ![screenshot4.png](/data/screenshots/screenshot4.png)
 ![screenshot5.png](/data/screenshots/screenshot5.png)

@@ -26,43 +26,91 @@
   background-color: #A0FFA0;
 }
 
+.cNemetalDark {
+  background-color: #009900;
+}
+
 .cReal {
   background-color: #C0FFFF;
+}
+
+.cRealDark {
+  background-color: #00CCCC;
 }
 
 .cSheloch {
   background-color: #FF6666;
 }
 
+.cShelochDark {
+  background-color: #CC3333;
+}
+
 .cShelLand {
   background-color: #FFDEAD;
+}
+
+.cShelLandDark {
+  background-color: #CCAB7A;
 }
 
 .cPolimetal {
   background-color: #CCCC99;
 }
 
+.cPolimetalDark {
+  background-color: #999966;
+}
+
 .cGalogen {
   background-color: #FFFF99;
+}
+
+.cGalogenDark {
+  background-color: #BBBB44;
 }
 
 .cPostmetal {
   background-color: #CCCCCC;
 }
 
+.cPostmetalDark {
+  background-color: #999999;
+}
+
 .cLantan {
   background-color: #FFBFFF;
+}
+
+.cLantanDark {
+  background-color: #BB8BBB;
 }
 
 .cActan {
   background-color: #FF99CC;
 }
 
+.cActanDark {
+  background-color: #CC6699;
+}
+
 .cMetal {
   background-color: #FFC0C0;
 }
 
+.cMetalDark {
+  background-color: #BB9090;
+}
+
 .cUnknown {
-  background-color: #FFFFFF;
+  background-color: #DDDDDD;
+}
+
+.cUnknownDark {
+  background-color: #555555;
+}
+
+.blue {
+  background-color: blue;
 }
 

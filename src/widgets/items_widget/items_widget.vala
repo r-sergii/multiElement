@@ -7,6 +7,9 @@ namespace Multielement {
 
     public enum ItemView {Small, Normal, Large}
 
+    const string LIGHTGREY = "cNemetal";
+    const string DARKGREY = "cNemetalDark";
+
     public class PeriodItem : Gtk.Frame {
 
         private string Text;
@@ -107,6 +110,128 @@ namespace Multielement {
       }
     }
 
+
+    public class ElementItem2 : Gtk.Button {
+
+        private string Nomer;
+	    private string Text;
+	    private string Weight;
+	    private CSSColor cssColor;
+	    private Label lNomer;
+	    private Label lName;
+	    private Label lWeight;
+
+      public ElementItem2 (string _Nomer, string _Text, string _Weight, CSSColor _cssColor, MainWindow parent, ItemView iView = ItemView.Normal)
+      {
+	      Nomer = _Nomer;
+	      Text = _Text;
+	      Weight = _Weight;
+	      cssColor = _cssColor;
+
+//	      Gtk.Button frm = new Gtk.Button();
+/*
+//          string dataCSS = ".light { background-color: #A0FFA0; } .dark { background-color: #009900; }";
+//          string dataCSS = ".light { background-color: blue; } .dark { background-color: red; }";
+//////          + "pink {background: pink;}; lightgrey {background: lightgrey;}; palegreen {background: green;}";
+          var css_provider = new Gtk.CssProvider();
+          css_provider.load_from_string(cssColor);
+//            css_provider.load_from_resource("/ua/multiapps/multiElement/items_widget.css");
+          Gtk.StyleContext.add_provider_for_display(Gdk.Display.get_default(),css_provider,Gtk.STYLE_PROVIDER_PRIORITY_USER);
+*/
+          //get current theme
+//          var app = GLib.Application.get_default();
+  //        var theme = (app as Multielement.Application).theme;
+
+	      //Label
+	      lNomer = new Gtk.Label (Nomer);
+	      //Label
+	      lName = new Gtk.Label (Text);
+	      //Label
+	      lWeight = new Gtk.Label (Weight);
+
+	      //VBox vBox = new VBox(false, 1);
+          Gtk.Box vBox = new Gtk.Box (Gtk.Orientation.VERTICAL, 1);
+
+	      vBox.set_homogeneous (false);
+	      if((iView == ItemView.Normal) || (iView == ItemView.Large))
+          {
+	          lNomer.set_markup ("<span size='6000'>" + Nomer + "</span>");
+	          lNomer.set_justify (Justification.RIGHT);
+	          lNomer.remove_css_class(multiElement.Resourse.cDefault);
+	          lNomer.add_css_class(cssColor.light);
+	//          lNomer.add_css_class("light");
+
+			        //this
+	          vBox.append (lNomer);
+          }
+
+	      lName.set_markup ("<span size='12000'>" + Text + "</span>");
+	      lName.set_justify (Justification.LEFT);
+          lName.set_use_markup(true);
+          lName.remove_css_class(multiElement.Resourse.cDefault);
+  //        lName.add_css_class(gColor);
+          lName.add_css_class(cssColor.light);
+
+			    //this
+	      vBox.append (lName);
+
+          if(iView == ItemView.Large)
+          {
+	          lWeight.set_markup ("<span size='8000'>" + Weight + "</span>");
+	          lWeight.set_justify (Justification.LEFT);
+              lWeight.set_use_markup(true);
+              lWeight.remove_css_class(multiElement.Resourse.cDefault);
+  //            lWeight.add_css_class(gColor);
+              lWeight.add_css_class(cssColor.light);
+
+			        //this
+              vBox.append (lWeight);
+          }
+	      ConnectCall(Nomer, this, parent);
+	      this.set_label ((string)null);
+          this.set_child (vBox);
+
+          this.remove_css_class(multiElement.Resourse.cDefault);
+          this.add_css_class(cssColor.light);
+
+          changeTheme ();
+//	      return frm;
+      }
+
+      public void changeTheme() {
+          //get current theme
+          var app = GLib.Application.get_default();
+          var theme = (app as Multielement.Application).theme;
+
+          if((theme == Adw.ColorScheme.FORCE_LIGHT) || (theme == Adw.ColorScheme.PREFER_LIGHT)
+                || (theme == Adw.ColorScheme.DEFAULT)) {
+                lName.remove_css_class(cssColor.dark);
+                lName.add_css_class(cssColor.light);
+                lNomer.remove_css_class(cssColor.dark);
+	            lNomer.add_css_class(cssColor.light);
+                lWeight.remove_css_class(cssColor.dark);
+	            lWeight.add_css_class(cssColor.light);
+                this.remove_css_class(cssColor.dark);
+                this.add_css_class(cssColor.light);
+          } else {
+                lName.remove_css_class(cssColor.light);
+                lName.add_css_class(cssColor.dark);
+                lNomer.remove_css_class(cssColor.light);
+                lNomer.add_css_class(cssColor.dark);
+                lWeight.remove_css_class(cssColor.light);
+                lWeight.add_css_class(cssColor.dark);
+                this.remove_css_class(cssColor.light);
+                this.add_css_class(cssColor.dark);
+          }
+      }
+
+      public void ConnectCall(string sNomer, Button eb, MainWindow parent)
+      {
+            int nomer = int.parse (sNomer);
+            eb.clicked.connect(() => { parent.Call001(nomer); });
+      }
+    }
+
     public class OHItem : Gtk.Frame {
 
         private string Text;
@@ -154,6 +279,59 @@ namespace Multielement {
 //	      return frm;
       }
 
+    }
+
+    public class PropertiesItem2 : Gtk.Frame {
+
+        private string Text;
+	    private CSSColor cssColor;
+        private Gtk.Label lName;      //16000//12000
+
+
+        public PropertiesItem2 (string _Text, CSSColor _cssColor)
+        {
+//          Text = TextOperation.TextTrim(_Text, 15);
+
+          Text = _Text;
+          cssColor = _cssColor;
+
+	      //Frame frm = new Gtk.Frame("");
+	      //Label
+	      lName = new Gtk.Label (Text);      //16000//12000
+
+	      Gtk.Box vBox = new Gtk.Box (Gtk.Orientation.VERTICAL, 1);
+
+	      lName.set_markup ("<span size='9000'>" + Text + "</span>");
+	      lName.set_justify (Justification.LEFT);
+          lName.add_css_class(cssColor.light);
+	      //this
+	      vBox.append(lName);
+
+	      this.set_label((string)null);
+          this.set_child(vBox);
+
+          changeTheme ();
+//	      return frm;
+      }
+
+      public void changeTheme() {
+          //get current theme
+          var app = GLib.Application.get_default();
+          var theme = (app as Multielement.Application).theme;
+
+          if((theme == Adw.ColorScheme.FORCE_LIGHT) || (theme == Adw.ColorScheme.PREFER_LIGHT)
+                || (theme == Adw.ColorScheme.DEFAULT)) {
+                lName.remove_css_class(cssColor.dark);
+                lName.add_css_class(cssColor.light);
+                this.remove_css_class(cssColor.dark);
+                this.add_css_class(cssColor.light);
+          } else {
+                lName.remove_css_class(cssColor.light);
+                lName.add_css_class(cssColor.dark);
+                this.remove_css_class(cssColor.light);
+                this.add_css_class(cssColor.dark);
+          }
+      }
     }
 
 
