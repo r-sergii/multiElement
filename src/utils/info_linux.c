@@ -83,3 +83,13 @@ char* get_name_architecture_linux()
 //  printf("\n %s", buffer);
   return buffer;
 }
+
+char* get_current_gtk_theme()
+{
+  FILE *fp;
+  char* buffer = malloc(SIZEOS);
+  fp = popen("gsettings get org.gnome.desktop.interface gtk-theme", "r");
+  fgets(buffer, SIZEOS, fp);
+  pclose(fp);
+  return buffer;
+}

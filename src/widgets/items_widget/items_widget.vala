@@ -202,9 +202,11 @@ namespace Multielement {
           //get current theme
           var app = GLib.Application.get_default();
           var theme = (app as Multielement.Application).theme;
+          var info = (app as Multielement.Application).info;
 
           if((theme == Adw.ColorScheme.FORCE_LIGHT) || (theme == Adw.ColorScheme.PREFER_LIGHT)
-                || (theme == Adw.ColorScheme.DEFAULT)) {
+                || ((theme == Adw.ColorScheme.DEFAULT) && (info.theme == true))
+                ) {
                 lName.remove_css_class(cssColor.dark);
                 lName.add_css_class(cssColor.light);
                 lNomer.remove_css_class(cssColor.dark);

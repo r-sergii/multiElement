@@ -1,6 +1,7 @@
 extern string get_name_os_linux ();
 extern string get_name_os2_linux ();
 extern string get_name_cpu_linux ();
+extern string get_current_gtk_theme ();
 //extern string get_name_architecture_linux ();
 
 namespace MyLib
@@ -15,6 +16,16 @@ namespace MyLib
         private string _cpu;
     //    private string _arhitech;
 
+        private bool _theme; // true - if Light Theme
+
+        private bool is_light_theme () {
+            string _temp = get_current_gtk_theme ();
+//            stdout.printf ("%s", _temp);
+            int begin = _temp.index_of ("dark");
+//            stdout.printf ("%d", begin);
+            return begin == -1 ? true : false;
+        }
+
         public InfoLinux () {
             Object ();
             s_os = get_name_os2_linux ();
@@ -28,6 +39,8 @@ namespace MyLib
 
 	        _os = find_os2 ();
 	        _cpu = find_cpu ();
+
+	        _theme = is_light_theme ();
         }
 
         private string find_os () {
@@ -78,6 +91,11 @@ namespace MyLib
             }
         }
 
+        public bool theme {
+            get {
+                return _theme;
+            }
+        }
     /*
         public string arhitech {
             get {

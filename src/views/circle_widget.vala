@@ -37,7 +37,13 @@ namespace Multielement {
                 MyLib.HexColor fon;
                 var app = GLib.Application.get_default();
                 theme = (app as Multielement.Application).theme;
-                if((theme == Adw.ColorScheme.FORCE_LIGHT) || (theme == Adw.ColorScheme.PREFER_LIGHT)) {
+                var info = (app as Multielement.Application).info;
+
+//                if((theme == Adw.ColorScheme.FORCE_LIGHT) || (theme == Adw.ColorScheme.PREFER_LIGHT)) {
+                if((theme == Adw.ColorScheme.FORCE_LIGHT) || (theme == Adw.ColorScheme.PREFER_LIGHT)
+                || ((theme == Adw.ColorScheme.DEFAULT) && (info.theme == true))
+                ) {
+
                     //cr.set_source_rgb (0.95, 0.95, 0.95);
                     fon = multiElement.Resourse.gUnknown;
                 } else {

@@ -6,7 +6,7 @@ namespace Multielement {
         private Multielement.PropertiesService _propertiesService;
         private Multielement.SettingsService _settingsService;
 
-        private MyLib.InfoLinux info;
+        private MyLib.InfoLinux _info;
 
         public Application () {
             Object (application_id: "io.github.r_sergii.multiElement", flags: ApplicationFlags.FLAGS_NONE);
@@ -30,8 +30,9 @@ namespace Multielement {
             set_theme_action.notify.connect (this.set_app_theme);
             this.add_action (set_theme_action);
 
-            info = new MyLib.InfoLinux ();
+            _info = new MyLib.InfoLinux ();
 //            stdout.printf ("%s\n", info.os + "-" + info.cpu);
+//            stdout.printf ("%s\n", info.theme ? "true" : "false");
 
             _settingsService = new SettingsService ();
             _elementService = new ElementService ();
@@ -61,7 +62,7 @@ namespace Multielement {
 
                 var locale = this.settingsService.locale;
 
-                var appsLoad = new Multielement.AppsLoadService (info, _settingsService.locale.locale );
+                var appsLoad = new Multielement.AppsLoadService (_info, _settingsService.locale.locale );
                 appsLoad.insert ();
 
                 var splash = new Multielement.SplashWindow (this);
@@ -77,6 +78,12 @@ namespace Multielement {
 //                win = new Multielement.Window (this);
             }
             win.present ();
+        }
+
+        public MyLib.InfoLinux info {
+            get {
+                return _info;
+            }
         }
 
         public Multielement.ElementService elementService {
