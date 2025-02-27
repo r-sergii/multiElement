@@ -273,7 +273,7 @@ namespace Multielement {
             var win = this.mainWindow; //active_window as Multielement.MainWindow;
             //message ("Start");
             if((win != null) && (win.isCreate != false)) {
-                message (new_state.to_string ());
+//                message (new_state.to_string ());
                 win.shortWidget.changeTheme2 (new_state);
                 win.extendedWidget.changeTheme2 (new_state);
                 win.adomahHorizWidget.changeTheme2 (new_state);

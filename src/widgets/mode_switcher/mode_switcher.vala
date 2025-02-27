@@ -50,7 +50,7 @@ namespace MyLib {
 //            var theme = (app as Multielement.Application).theme;
 
             switch_button.set_state (new_state);
-            message (new_state.to_string ());
+//            message (new_state.to_string ());
 /*
             if(new_state) {
                 Adw.StyleManager.get_default ().set_color_scheme (Adw.ColorScheme.FORCE_DARK);
