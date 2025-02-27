@@ -9,7 +9,7 @@ namespace Multielement {
     class PiramidWidget
     {
 
-        private Adw.ColorScheme theme;
+//        private Adw.ColorScheme theme;
         //public Gtk.Label PiramidWidget (Window parent)
         public Gtk.DrawingArea PiramidWidget (MainWindow parent)
         {
@@ -26,12 +26,14 @@ namespace Multielement {
 
                 MyLib.HexColor fon;
                 var app = GLib.Application.get_default();
-                theme = (app as Multielement.Application).theme;
+//                theme = (app as Multielement.Application).theme;
+                bool theme = (app as Multielement.Application).settingsService.theme.theme;
                 var info = (app as Multielement.Application).info;
 
 //                if((theme == Adw.ColorScheme.FORCE_LIGHT) || (theme == Adw.ColorScheme.PREFER_LIGHT)) {
-                if((theme == Adw.ColorScheme.FORCE_LIGHT) || (theme == Adw.ColorScheme.PREFER_LIGHT)
-                  || ((theme == Adw.ColorScheme.DEFAULT) && (info.theme == true))
+//                if((theme == Adw.ColorScheme.FORCE_LIGHT) || (theme == Adw.ColorScheme.PREFER_LIGHT)
+  //                || ((theme == Adw.ColorScheme.DEFAULT) && (info.theme == true))
+                if(theme != true
                 ) {
                     //cr.set_source_rgb (0.95, 0.95, 0.95);
                     fon = multiElement.Resourse.gUnknown;

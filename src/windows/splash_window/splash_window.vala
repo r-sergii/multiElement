@@ -17,7 +17,8 @@ namespace Multielement {
 
             //get current theme
             var app = GLib.Application.get_default();
-            var theme = (app as Multielement.Application).theme;
+//            var theme = (app as Multielement.Application).theme;
+            bool theme = (app as Multielement.Application).settingsService.theme.theme;
             var locale = (app as Multielement.Application).settingsService.locale;
 
             //var
@@ -27,8 +28,10 @@ namespace Multielement {
             pbar.center_filled = true;
             pbar.radius_filled = true;
 
-            if((theme == Adw.ColorScheme.FORCE_LIGHT) || (theme == Adw.ColorScheme.PREFER_LIGHT)
-                || (theme == Adw.ColorScheme.DEFAULT)) {
+//            if((theme == Adw.ColorScheme.FORCE_LIGHT) || (theme == Adw.ColorScheme.PREFER_LIGHT)
+  //              || (theme == Adw.ColorScheme.DEFAULT)
+            if(theme != true
+                ) {
                 pbar.center_fill_color = "#FAFAFA";
             } else {
                 pbar.center_fill_color = "#050505";

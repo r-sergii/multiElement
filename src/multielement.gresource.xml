@@ -4,6 +4,7 @@
     <file>windows/language_window/language_window.ui</file>
     <file>windows/browser_window/browser_window.ui</file>
     <file>widgets/theme_switcher/theme_switcher.ui</file>
+    <file>widgets/mode_switcher/mode_switcher.ui</file>
     <file>gtk/help-overlay.ui</file>
     <file alias="items_widget.css">widgets/items_widget/items_widget.css</file>
     <file alias="theme_switcher.css">widgets/theme_switcher/theme_switcher.css</file>

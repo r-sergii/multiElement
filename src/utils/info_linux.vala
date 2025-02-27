@@ -18,14 +18,6 @@ namespace MyLib
 
         private bool _theme; // true - if Light Theme
 
-        private bool is_light_theme () {
-            string _temp = get_current_gtk_theme ();
-//            stdout.printf ("%s", _temp);
-            int begin = _temp.index_of ("dark");
-//            stdout.printf ("%d", begin);
-            return begin == -1 ? true : false;
-        }
-
         public InfoLinux () {
             Object ();
             s_os = get_name_os2_linux ();
@@ -77,6 +69,14 @@ namespace MyLib
                 builder.append_c(t_cpu[i]);
             }
             return builder.str;
+        }
+
+        private bool is_light_theme () {
+            string _temp = get_current_gtk_theme ();
+//            stdout.printf ("%s\n", _temp);
+            int begin = _temp.index_of ("dark");
+//            stdout.printf ("%d\n", begin);
+            return begin == -1 ? true : false;
         }
 
         public string os {

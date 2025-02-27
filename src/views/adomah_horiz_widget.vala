@@ -25,6 +25,17 @@ namespace Multielement {
             heElementItem.changeTheme();
         }
 
+        public void changeTheme2 (bool th) {
+            for(int i=0; i<listElementItems.size; i++) {
+                listElementItems[i].changeTheme2(th);
+            }
+            for(int j=0; j<listPropertiesItems.size; j++) {
+                listPropertiesItems[j].changeTheme2(th);
+            }
+            hElementItem.changeTheme2(th);
+            heElementItem.changeTheme2(th);
+        }
+
         public void init (MainWindow parent)
           {
             listPropertiesItems = new Gee.ArrayList<PropertiesItem2> ();

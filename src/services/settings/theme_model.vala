@@ -5,24 +5,24 @@ namespace Multielement {
     }
 
     public class ThemeModel {
-        public int theme;
+        //public int theme;
+        public bool theme;
 
         public ThemeModel() {
-            theme = 0;
+            //theme = 0;
+            theme = false;
         }
 
         public void fromSettings (GLib.Settings settings)
         {
-//            ThemeField themeField = new ThemeField();
-
-            theme = settings.get_int (ThemeField.theme);
+//            theme = settings.get_int (ThemeField.theme);
+            theme = settings.get_boolean (ThemeField.theme);
         }
 
         public void toSettings (GLib.Settings settings)
         {
-//            ThemeField themeField = new ThemeField();
-
-            settings.set_int (ThemeField.theme, theme);
+//            settings.set_int (ThemeField.theme, theme);
+            settings.set_boolean (ThemeField.theme, theme);
         }
     }
 }

@@ -27,6 +27,17 @@ namespace Multielement {
             actanElementItem.changeTheme();
         }
 
+        public void changeTheme2 (bool theme) {
+            for(int i=0; i<listElementItems.size; i++) {
+                listElementItems[i].changeTheme2(theme);
+            }
+            for(int j=0; j<listPropertiesItems.size; j++) {
+                listPropertiesItems[j].changeTheme2(theme);
+            }
+            lantanElementItem.changeTheme2(theme);
+            actanElementItem.changeTheme2(theme);
+        }
+
         public void init (MainWindow parent)
           {
             listPropertiesItems = new Gee.ArrayList<PropertiesItem2> ();

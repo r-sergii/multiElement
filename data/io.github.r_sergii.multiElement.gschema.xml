@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="multiElement">
 	<schema id="io.github.r_sergii.multiElement" path="/io/github/r_sergii/multiElement/">
+<!--
 	  <key name="theme" type="i">
 	    <default>2</default>
+	  </key>
+	  -->
+	  <key name="theme" type="b">
+	    <default>true</default>
 	  </key>
 	  <key name="group" type="s">
 	    <default>"Group"</default>

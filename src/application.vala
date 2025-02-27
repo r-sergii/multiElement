@@ -2,6 +2,7 @@ namespace Multielement {
     public class Application : Adw.Application {
 
         public Adw.ColorScheme theme { get; set; }
+        private Multielement.MainWindow mainWindow;
         private Multielement.ElementService _elementService;
         private Multielement.PropertiesService _propertiesService;
         private Multielement.SettingsService _settingsService;
@@ -33,7 +34,14 @@ namespace Multielement {
             _info = new MyLib.InfoLinux ();
 //            stdout.printf ("%s\n", info.os + "-" + info.cpu);
 //            stdout.printf ("%s\n", info.theme ? "true" : "false");
-
+/*            var infoTheme = new MyLib.InfoTheme ();
+            stdout.printf ("%s\n", infoTheme.name);
+            stdout.printf ("%s\n", infoTheme.colorscheme);
+            stdout.printf ("Back\n");
+            stdout.printf ("%s\n", infoTheme.background);
+            stdout.printf ("Text\n");
+            stdout.printf ("%s\n", infoTheme.textcolor);
+*/
             _settingsService = new SettingsService ();
             _elementService = new ElementService ();
             _propertiesService = new PropertiesService ();
@@ -109,6 +117,7 @@ namespace Multielement {
             var win = new Multielement.MainWindow (this);
 //            win.set_position ( Gtk.WindowPosition.CENTER );// (GTK_WIN_POS_CENTER);
             win.present ();
+            mainWindow = win;
             return false;
         }
 
@@ -154,7 +163,7 @@ namespace Multielement {
         }
 
         private void init_app_theme () {
-            var th = settingsService.theme;
+/*            var th = settingsService.theme;
             switch (th.theme) {
                 case 0: theme = Adw.ColorScheme.DEFAULT;
                         break;
@@ -169,16 +178,25 @@ namespace Multielement {
                 default: theme = Adw.ColorScheme.DEFAULT;
                         break;
             }
+            */
+            var th = settingsService.theme;
+            if(th.theme) {
+                theme = Adw.ColorScheme.FORCE_DARK;
+            }
+            else {
+                theme = Adw.ColorScheme.FORCE_LIGHT;
+            }
             Adw.StyleManager.get_default ().set_color_scheme (this.theme);
         }
 
-        private void set_app_theme () {
+        //private
+        public void set_app_theme () {
             Adw.StyleManager.get_default ().set_color_scheme (this.theme);
 //            message (this.theme.to_string());
 
             var th = settingsService.theme;
 
-            switch(theme) {
+/*            switch(theme) {
                 case Adw.ColorScheme.FORCE_LIGHT:
 //                    message ("FL");
                     th.theme = 1;
@@ -204,7 +222,15 @@ namespace Multielement {
                     th.theme = 0;
                     break;
             }
-
+*/
+/*
+            if(theme == Adw.ColorScheme.FORCE_DARK) {
+                th.theme = true;
+            }
+            else {
+                th.theme = false;
+            }
+*/
             settingsService.writeTheme ();
             var win = this.active_window as Multielement.MainWindow;
             //message ("Start");
@@ -217,6 +243,42 @@ namespace Multielement {
             }
             //message ("Short");
 
+        }
+
+        public void changeTheme (bool new_state) {
+//            var th = settingsService.theme;
+            settingsService.theme.theme = new_state;
+
+            if(new_state) {
+                Adw.StyleManager.get_default ().set_color_scheme (Adw.ColorScheme.FORCE_DARK);
+                //Adw.ColorScheme.PREFER_DARK;
+                //Adw.ColorScheme.FORCE_DARK;
+                //Adw.ColorScheme.DEFAULT;
+            }
+            else {
+                Adw.StyleManager.get_default ().set_color_scheme (Adw.ColorScheme.FORCE_LIGHT);
+                //Adw.ColorScheme.PREFER_LIGHT
+                //Adw.ColorScheme.FORCE_LIGHT;
+                //Adw.ColorScheme.DEFAULT;
+            }
+/*
+            if(theme == Adw.ColorScheme.FORCE_DARK) {
+                th.theme = true;
+            }
+            else {
+                th.theme = false;
+            }
+*/
+            settingsService.writeTheme ();
+            var win = this.mainWindow; //active_window as Multielement.MainWindow;
+            //message ("Start");
+            if((win != null) && (win.isCreate != false)) {
+                message (new_state.to_string ());
+                win.shortWidget.changeTheme2 (new_state);
+                win.extendedWidget.changeTheme2 (new_state);
+                win.adomahHorizWidget.changeTheme2 (new_state);
+                win.adomahVertWidget.changeTheme2 (new_state);
+            }
         }
 /*
         private void on_towns_action () {

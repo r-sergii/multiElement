@@ -204,8 +204,40 @@ namespace Multielement {
           var theme = (app as Multielement.Application).theme;
           var info = (app as Multielement.Application).info;
 
-          if((theme == Adw.ColorScheme.FORCE_LIGHT) || (theme == Adw.ColorScheme.PREFER_LIGHT)
-                || ((theme == Adw.ColorScheme.DEFAULT) && (info.theme == true))
+          if((theme == Adw.ColorScheme.FORCE_LIGHT)
+//          || (theme == Adw.ColorScheme.PREFER_LIGHT)
+  //              || ((theme == Adw.ColorScheme.DEFAULT) && (info.theme == true))
+                ) {
+                lName.remove_css_class(cssColor.dark);
+                lName.add_css_class(cssColor.light);
+                lNomer.remove_css_class(cssColor.dark);
+	            lNomer.add_css_class(cssColor.light);
+                lWeight.remove_css_class(cssColor.dark);
+	            lWeight.add_css_class(cssColor.light);
+                this.remove_css_class(cssColor.dark);
+                this.add_css_class(cssColor.light);
+          } else {
+                lName.remove_css_class(cssColor.light);
+                lName.add_css_class(cssColor.dark);
+                lNomer.remove_css_class(cssColor.light);
+                lNomer.add_css_class(cssColor.dark);
+                lWeight.remove_css_class(cssColor.light);
+                lWeight.add_css_class(cssColor.dark);
+                this.remove_css_class(cssColor.light);
+                this.add_css_class(cssColor.dark);
+          }
+      }
+
+      public void changeTheme2(bool th) {
+          //get current theme
+          var app = GLib.Application.get_default();
+          var theme = (app as Multielement.Application).theme;
+          var info = (app as Multielement.Application).info;
+
+          if(th != true
+//          if((theme == Adw.ColorScheme.FORCE_LIGHT)
+//          || (theme == Adw.ColorScheme.PREFER_LIGHT)
+  //              || ((theme == Adw.ColorScheme.DEFAULT) && (info.theme == true))
                 ) {
                 lName.remove_css_class(cssColor.dark);
                 lName.add_css_class(cssColor.light);
@@ -321,8 +353,11 @@ namespace Multielement {
           var app = GLib.Application.get_default();
           var theme = (app as Multielement.Application).theme;
 
-          if((theme == Adw.ColorScheme.FORCE_LIGHT) || (theme == Adw.ColorScheme.PREFER_LIGHT)
-                || (theme == Adw.ColorScheme.DEFAULT)) {
+          if((theme == Adw.ColorScheme.FORCE_LIGHT)
+//          || (theme == Adw.ColorScheme.PREFER_LIGHT)
+  //              || (theme == Adw.ColorScheme.DEFAULT)
+            )
+                {
                 lName.remove_css_class(cssColor.dark);
                 lName.add_css_class(cssColor.light);
                 this.remove_css_class(cssColor.dark);
@@ -334,6 +369,30 @@ namespace Multielement {
                 this.add_css_class(cssColor.dark);
           }
       }
+
+      public void changeTheme2(bool th) {
+          //get current theme
+          var app = GLib.Application.get_default();
+          var theme = (app as Multielement.Application).theme;
+
+          if(th != true
+//          if((theme == Adw.ColorScheme.FORCE_LIGHT)
+//          || (theme == Adw.ColorScheme.PREFER_LIGHT)
+  //              || (theme == Adw.ColorScheme.DEFAULT)
+            )
+                {
+                lName.remove_css_class(cssColor.dark);
+                lName.add_css_class(cssColor.light);
+                this.remove_css_class(cssColor.dark);
+                this.add_css_class(cssColor.light);
+          } else {
+                lName.remove_css_class(cssColor.light);
+                lName.add_css_class(cssColor.dark);
+                this.remove_css_class(cssColor.light);
+                this.add_css_class(cssColor.dark);
+          }
+      }
+
     }
 
 

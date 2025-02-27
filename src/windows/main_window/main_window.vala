@@ -12,7 +12,8 @@ namespace Multielement {
         public AdomahHorizWidget adomahHorizWidget;
         private int selectedPage;
 
-    	private MyLib.ThemeSwitcher theme_switcher;
+//    	private MyLib.ThemeSwitcher theme_switcher;
+    	private MyLib.ModeSwitcher mode_switcher;
 
 //        private Adw.Window window_adw;
         private Adw.ToastOverlay overlay;
@@ -40,15 +41,20 @@ namespace Multielement {
  	    }
 
         public void init_menu () {
-            _isCreate = false;
+            _isCreate = true;
             var app = GLib.Application.get_default();
             var locale = (app as Multielement.Application).settingsService.locale;
+            var iTheme = (app as Multielement.Application).settingsService.theme.theme;
 
             var menu = new GLib.Menu();
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            var item_theme = new GLib.MenuItem (_("custom"), null);//"app.set_app_theme");
-            item_theme.set_attribute ("custom", "s", "theme");
+//            var item_theme = new GLib.MenuItem (_("custom"), null);//"app.set_app_theme");
+  //          item_theme.set_attribute ("custom", "s", "theme");
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            var item_mode = new GLib.MenuItem (_("custom"), null);//"app.set_app_theme");
+            item_mode.set_attribute ("custom", "s", "mode");
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 //            var item_preferences = new GLib.MenuItem (_("Preferences"), "app.preferences");
             var item_language = new GLib.MenuItem (_(locale.language), "app.language");
 //            var item_towns = new GLib.MenuItem (_(locale.towns), "app.towns");
@@ -57,7 +63,8 @@ namespace Multielement {
 
 //            message (locale.locale);
 
-            menu.append_item (item_theme);
+//            menu.append_item (item_theme);
+            menu.append_item (item_mode);
 //            menu.append_item (item_preferences);
             menu.append_item (item_language);
 //            menu.append_item (item_towns);
@@ -75,8 +82,12 @@ namespace Multielement {
             var pop = (Gtk.PopoverMenu) this.menu_button.get_popover ();
             pop.set_menu_model (menu);
 
-            this.theme_switcher = new MyLib.ThemeSwitcher ();
-            pop.add_child (this.theme_switcher, "theme");
+//            this.theme_switcher = new MyLib.ThemeSwitcher ();
+//            pop.add_child (this.theme_switcher, "theme");
+
+//!!!!!!            this.mode_switcher = new MyLib.ModeSwitcher ();
+//            this.mode_switcher.set_theme (iTheme);
+            pop.add_child (this.mode_switcher, "mode");
 
 //            message ( (list_box.get_row_at_index (0) as Adw.ActionRow).title );
   //          message ( (list_box.get_row_at_index (1) as Adw.ActionRow).title );
@@ -105,6 +116,7 @@ namespace Multielement {
             selectedPage = 0;
             var app = GLib.Application.get_default();
             var locale = (app as Multielement.Application).settingsService.locale;
+            var iTheme = (app as Multielement.Application).settingsService.theme.theme;
 
 //////          string dataCSS = "green {background: green;}; purple {background: purple;}; "
 //////          + "pink {background: pink;}; lightgrey {background: lightgrey;}; palegreen {background: green;}";
@@ -212,28 +224,32 @@ namespace Multielement {
 //            content_headerbar.pack_end(save_as_button);
 //            content_headerbar.pack_end(save_button);
 
-
             var about_action = new GLib.SimpleAction ("about", null);
             about_action.activate.connect (about);
             var quit_action = new GLib.SimpleAction ("quit", null);
             quit_action.activate.connect(()=>{
                 on_close_application();
             });
-            var preferences_action = new GLib.SimpleAction ("preferences", null);
-            preferences_action.activate.connect(()=>{
-                on_preferences_application();
-            });
+//            var preferences_action = new GLib.SimpleAction ("preferences", null);
+  //          preferences_action.activate.connect(()=>{
+    //            on_preferences_application();
+      //      });
 
-            this.theme_switcher = new MyLib.ThemeSwitcher ();
+//            this.theme_switcher = new MyLib.ThemeSwitcher ();
+            this.mode_switcher = new MyLib.ModeSwitcher ();
+            this.mode_switcher.set_theme (iTheme);
 
 ///////            var app = GLib.Application.get_default();
-            app.add_action(preferences_action);
+//            app.add_action(preferences_action);
             app.add_action(about_action);
             app.add_action(quit_action);
             var menu = new GLib.Menu();
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            var item_theme = new GLib.MenuItem (_("custom"), null);//"app.set_app_theme");
-            item_theme.set_attribute ("custom", "s", "theme");
+//            var item_theme = new GLib.MenuItem (_("custom"), null);//"app.set_app_theme");
+  //          item_theme.set_attribute ("custom", "s", "theme");
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            var item_mode = new GLib.MenuItem (_("custom"), null);//"app.set_app_theme");
+            item_mode.set_attribute ("custom", "s", "mode");
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //            var item_preferences = new GLib.MenuItem (_("Preferences"), "app.preferences");
             var item_language = new GLib.MenuItem (_(locale.language), "app.language");
@@ -241,7 +257,8 @@ namespace Multielement {
             var item_about = new GLib.MenuItem (_(locale.about +" multiElement"), "app.about");
             var item_quit = new GLib.MenuItem (_(locale.exit_), "app.quit");
 
-            menu.append_item (item_theme);
+//            menu.append_item (item_theme);
+            menu.append_item (item_mode);
 //            menu.append_item (item_preferences);
             menu.append_item (item_language);
 //            menu.append_item (item_towns);
@@ -249,7 +266,8 @@ namespace Multielement {
             menu.append_item (item_quit);
 
             var popover = new Gtk.PopoverMenu.from_model(menu);
-            popover.add_child (this.theme_switcher, "theme");
+//            popover.add_child (this.theme_switcher, "theme");
+            popover.add_child (this.mode_switcher, "mode");
             menu_button.set_popover(popover);
 
             var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 5);

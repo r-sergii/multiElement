@@ -16,6 +16,7 @@ multielement_sources = [
   'widgets/theme_switcher/theme_switcher.vala',
   'widgets/circular-progress-bar/circular-progress-bar.vala',
   'widgets/progress_widget/progress_widget.vala',
+  'widgets/mode_switcher/mode_switcher.vala',
   'services/element/element_service.vala',
   'services/element/element_provider.vala',
   'services/element/element_model.vala',
@@ -41,6 +42,7 @@ multielement_sources = [
   'utils/http.vala',
   'utils/info_linux.vala',
   'utils/info_linux.c',
+  'utils/info_theme.vala',
 ]
 
 multielement_deps = [
